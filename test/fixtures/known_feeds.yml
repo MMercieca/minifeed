@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  identifier: MyString
+  poll_at: 2022-03-16 20:25:39
+
+two:
+  name: MyString
+  identifier: MyString
+  poll_at: 2022-03-16 20:25:39

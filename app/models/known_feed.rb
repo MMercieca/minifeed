@@ -1,0 +1,2 @@
+class KnownFeed < ApplicationRecord
+end
