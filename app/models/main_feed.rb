@@ -5,8 +5,8 @@ class MainFeed < ApplicationRecord
   before_save :ensure_unique_identifier
 
   def ensure_unique_identifier
-    if identifier.nil?
-      identifier = SecureRandom.uuid
+    if self.identifier.nil?
+      self.identifier = SecureRandom.uuid
     end
   end
 
@@ -55,5 +55,4 @@ class MainFeed < ApplicationRecord
     end
     feeds
   end
-
 end
