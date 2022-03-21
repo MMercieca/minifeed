@@ -1,1 +1,9 @@
-<%= current_user.email %>
+<p>Logged in as <%= current_user.email %></p>
+<% if @feeds.empty? %>
+  <p>No feeds loaded yet.  <a href="<%= new_main_feed_path %>">Load one?</a></p>
+<% end %>
+<% if !@feeds.empty? %>
+  <% @feeds.each do |feed| %>
+    <li><%= feed.name %></li>
+  <% end %>
+<% end %>

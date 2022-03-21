@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  resources :main_feeds
+  post 'main_feed', to: 'main_feeds#create'
+
   # Defines the root path route ("/")
   root "home#index"
 end

@@ -1,0 +1,10 @@
+<%= flash["error"] %>
+<%= form_with url: main_feeds_url, method: :post, locals: true do |f| %>
+  <fieldset>
+    <label for="name">Feed Name</label>
+    <%= f.text_field :name %><br />
+    <label for="url">Url</label>
+    <%= f.text_field :url %>
+    <%= f.submit %>
+  </fieldset>
+<% end %>

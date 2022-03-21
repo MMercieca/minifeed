@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_18_005644) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_21_002507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,7 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_18_005644) do
 
   create_table "known_mini_feeds", force: :cascade do |t|
     t.bigint "known_feed_id", null: false
-    t.string "episodes_identifier"
+    t.string "episode_prefix"
     t.string "feed_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,6 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_18_005644) do
     t.datetime "last_polled_at"
     t.string "name"
     t.bigint "user_id"
+    t.string "identifier"
   end
 
   create_table "mini_feeds", force: :cascade do |t|
