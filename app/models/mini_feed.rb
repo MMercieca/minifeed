@@ -2,8 +2,11 @@ class MiniFeed < ApplicationRecord
   belongs_to :main_feed
   has_one_attached :image
 
-  def episodes
-    rss = main_feed.fetch
+  def episodes(rss = nil)
+    if !rss
+      rss = main_feed.fetch
+    end
+    
     episodes = []
 
     all_episodes = rss.xpath("/rss/channel/item")
