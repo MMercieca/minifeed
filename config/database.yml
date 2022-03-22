@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: minicast_production
-  username: minicast
-  password: <%= ENV["MINICAST_DATABASE_PASSWORD"] %>
+  database: app_production
+  username: app
+  password: <%= ENV["APP_DATABASE_PASSWORD"] %>

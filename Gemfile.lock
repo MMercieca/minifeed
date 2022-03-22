@@ -109,6 +109,10 @@ GEM
       responders
       warden (~> 1.2.3)
     digest (3.1.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     ffi (1.15.5)
     formtastic (4.0.0)
@@ -179,7 +183,13 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
+    nokogiri (1.13.3-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.13.3-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.3-x86-linux)
+      racc (~> 1.4)
+    nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     open-uri (0.2.0)
       stringio
@@ -261,7 +271,11 @@ GEM
       railties (>= 6.0.0)
     stringio (3.0.1)
     strscan (3.0.1)
+    tailwindcss-rails (2.0.8-aarch64-linux)
+      railties (>= 6.0.0)
     tailwindcss-rails (2.0.8-arm64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.8-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
     tilt (2.0.10)
@@ -294,6 +308,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  linux
 
 DEPENDENCIES
   activeadmin
@@ -301,6 +316,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  dotenv-rails
   importmap-rails
   jbuilder
   open-uri
