@@ -80,7 +80,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
+  adapter: postgresql
+  host: <%= ENV["APP_DATABASE_HOSE"] %>
+  port: <%= ENV["APP_DATABASE_PORT"] %>
   database: <%= ENV["APP_DATABASE_NAME"] %>
   username: <%= ENV["APP_DATABASE_USER"] %>
   password: <%= ENV["APP_DATABASE_PASSWORD"] %>
