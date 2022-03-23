@@ -13,7 +13,7 @@ ActiveAdmin.register KnownMiniFeed do
     selectable_column
     id_column
     column :known_feed
-    column :episodes_identifier
+    column :episode_prefix
     column :feed_name
     column :image do |i|
       if i.image.attached?
@@ -27,7 +27,7 @@ ActiveAdmin.register KnownMiniFeed do
     f.inputs do
       f.input :known_feed
       f.input :feed_name
-      f.input :episodes_identifier
+      f.input :episode_prefix
       f.input :image, as: :file
     end
     f.actions
