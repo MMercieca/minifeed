@@ -6,7 +6,7 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-digitalocean:
+s3:
   service: S3
   access_key_id: <%= ENV["STORAGE_KEY_ID"] %>
   secret_access_key: <%= ENV["STORAGE_ACCESS_KEY"] %>
