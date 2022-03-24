@@ -1,0 +1,13 @@
+<h1 class="w-full block"><%= @main_feed.name %></h1>
+<table>
+  <tr>
+    <td>Feed Name</td>
+    <td>URL</td>
+  </tr>
+  <% @mini_feeds.each do |feed| %>
+    <tr>
+      <td><%= feed.feed_name %></td>
+     <td><%= feed.url(request.host) %></td>
+    </tr>
+  <% end %>
+</ul>

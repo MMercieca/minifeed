@@ -6,7 +6,7 @@ class MiniFeed < ApplicationRecord
     if !rss
       rss = main_feed.fetch
     end
-    
+
     episodes = []
 
     all_episodes = rss.xpath("/rss/channel/item")
@@ -18,5 +18,9 @@ class MiniFeed < ApplicationRecord
     end
 
     episodes
+  end
+
+  def url(host = "https://minicast.app")
+    "#{host}/feeds/#{main_feed.identifier}/#{id}.xml"
   end
 end

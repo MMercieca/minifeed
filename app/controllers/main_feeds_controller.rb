@@ -20,6 +20,11 @@ class MainFeedsController < ApplicationController
     redirect_to "/"
   end
 
+  def index
+    @main_feed = MainFeed.find_by(user: current_user, identifier: params[:identifier])
+    @mini_feeds = @main_feed.mini_feeds
+  end
+
   def main_feed_params
     params.require(:main_feed).permit(:name, :url)
   end

@@ -4,6 +4,6 @@
 <% end %>
 <% if !@feeds.empty? %>
   <% @feeds.each do |feed| %>
-    <li><%= feed.name %></li>
+    <li><%= link_to feed.name, main_feeds_url(identifier: feed.identifier) %></li>
   <% end %>
 <% end %>

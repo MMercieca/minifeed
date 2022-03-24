@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :main_feeds
   post 'main_feed', to: 'main_feeds#create'
+  get 'main_feed', to: 'main_feeds#show'
 
   match '/feeds/:identifier/:id', to: 'feeds#show', via: :get
 
