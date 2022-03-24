@@ -17,7 +17,6 @@ class MainFeedsController < ApplicationController
     main_feed.save
     main_feed.setup_mini_feeds
     
-
     redirect_to "/"
   end
 

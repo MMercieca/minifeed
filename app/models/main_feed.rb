@@ -11,7 +11,14 @@ class MainFeed < ApplicationRecord
   end
 
   def fetch
-    feed_xml = URI.open(url).read
+    if polled_at > 1.hour.ago || self.cached_feed.nil?
+      feed_xml = URI.open(url).read
+      self.last_polled_at = Time.zone.now
+      self.cached_feed = feed_xml
+      self.save
+    end
+
+    feed_xml = self.cached_feed
     Nokogiri(feed_xml)
   end
 
