@@ -7,7 +7,7 @@
   <% @mini_feeds.each do |feed| %>
     <tr>
       <td><%= feed.feed_name %></td>
-     <td><%= feed.url(request.host) %></td>
+     <td><%= feed.url(request.protocol, request.host) %></td>
     </tr>
   <% end %>
 </ul>

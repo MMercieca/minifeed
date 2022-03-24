@@ -20,7 +20,7 @@ class MiniFeed < ApplicationRecord
     episodes
   end
 
-  def url(host = "https://minicast.app")
-    "#{host}/feeds/#{main_feed.identifier}/#{id}.xml"
+  def url(protocol = "https", host = "minicast.app")
+    "#{protocol}#{host}/feeds/#{main_feed.identifier}/#{id}.xml"
   end
 end
