@@ -1,24 +1,12 @@
-# README
+# TODOMPM
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Google authentication
+* Mail
+* Display user's mini feeds
+* Images in S3?
+* Caching main feed
+* Unknown feed UI
+* Tip jar?
+* Styles
+* KnownFeeds import/export
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

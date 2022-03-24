@@ -11,7 +11,7 @@ s3:
   access_key_id: <%= ENV["STORAGE_KEY_ID"] %>
   secret_access_key: <%= ENV["STORAGE_ACCESS_KEY"] %>
   bucket: <%= ENV["STORAGE_BUCKET"] %>
-  region: <%= ENG["STORAGE_REGION"] %>
+  region: <%= ENV["STORAGE_REGION"] %>
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
