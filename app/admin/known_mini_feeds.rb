@@ -7,7 +7,7 @@ ActiveAdmin.register KnownMiniFeed do
   #   t.datetime "updated_at", null: false
   #   t.index ["known_feed_id"], name: "index_known_mini_feeds_on_known_feed_id"
   # end
-  permit_params :known_feed_id, :feed_name, :episodes_identifier, :image
+  permit_params :known_feed_id, :feed_name, :episode_prefix, :image
 
   index do
     selectable_column
