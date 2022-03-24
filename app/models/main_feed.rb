@@ -11,7 +11,7 @@ class MainFeed < ApplicationRecord
   end
 
   def fetch
-    if polled_at > 1.hour.ago || self.cached_feed.nil?
+    if polled_at.nil? || cached_feed.nil? || polled_at > 1.hour.ago 
       feed_xml = URI.open(url).read
       self.last_polled_at = Time.zone.now
       self.cached_feed = feed_xml
