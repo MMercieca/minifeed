@@ -1,9 +1,18 @@
-<p>Logged in as <%= current_user.email %></p>
 <% if @feeds.empty? %>
   <p>No feeds loaded yet.  <a href="<%= new_main_feed_path %>">Load one?</a></p>
 <% end %>
 <% if !@feeds.empty? %>
+  
   <% @feeds.each do |feed| %>
-    <li><%= link_to feed.name, main_feeds_url(identifier: feed.identifier) %></li>
+    <a href="<%= main_feeds_url(identifier: feed.identifier) %>">
+      <div class="flex flex-row h-1/4 border border-black">
+        <div class="w-lg h-lg border border-red">
+          <img class="w-64 block sm:mx-auto" src="<%= feed.default_image.url %>" />
+        </div>
+        <div class="w-3/4">
+          <div class="text-lg"><%= feed.name %></div>
+        </div>
+      </div>
+    </a>
   <% end %>
 <% end %>

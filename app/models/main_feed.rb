@@ -18,8 +18,18 @@ class MainFeed < ApplicationRecord
       self.save
     end
 
+    if default_image.nil?
+      set_image_from_feed
+    end
+    
     feed_xml = self.cached_feed
     Nokogiri(feed_xml)
+  end
+
+  def set_image_from_feed
+    image_url = Nokogiri(self.cached_feed).xpath('/rss/channel/image/url').text
+    image = URI.parse(image_url).open
+    self.default_image.attach(io: image, filename: 'logo.png')
   end
 
   def setup_mini_feeds
