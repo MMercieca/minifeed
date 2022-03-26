@@ -1,8 +1,9 @@
 class MainFeed < ApplicationRecord
-  has_one_attached :default_image
+  has_one_attached :image
   has_many :mini_feeds, dependent: :destroy
   belongs_to :user
   before_save :ensure_unique_identifier
+  default_scope { order(name: :asc) }
 
   def ensure_unique_identifier
     if self.identifier.nil?
@@ -13,15 +14,15 @@ class MainFeed < ApplicationRecord
   def fetch
     if polled_at.nil? || cached_feed.nil? || polled_at > 1.hour.ago 
       feed_xml = URI.open(url).read
-      self.last_polled_at = Time.zone.now
+      self.polled_at = Time.zone.now
       self.cached_feed = feed_xml
       self.save
     end
 
-    if default_image.nil?
+    if image.attached?
       set_image_from_feed
     end
-    
+
     feed_xml = self.cached_feed
     Nokogiri(feed_xml)
   end
@@ -29,7 +30,7 @@ class MainFeed < ApplicationRecord
   def set_image_from_feed
     image_url = Nokogiri(self.cached_feed).xpath('/rss/channel/image/url').text
     image = URI.parse(image_url).open
-    self.default_image.attach(io: image, filename: 'logo.png')
+    self.image.attach(io: image, filename: 'logo.png')
   end
 
   def setup_mini_feeds

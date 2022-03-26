@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0">
 <channel>
-  <title><%= @mini_feed.feed_name %></title>
+  <title><%= @mini_feed.name %></title>
   <link><%= tag_from_main("/rss/channel/link") %></link>
   <description><%= tag_from_main("/rss/channel/description") %></description>
   <atom:link><%= tag_from_main("/rss/channel/atom:link/@href") %></atom:link>
@@ -19,7 +19,7 @@
   <lastBuildDate><%= tag_from_main("/rss/channel/lastBuildDate") %></lastBuildDate>
   <image>
     <url><%= @mini_feed.image.url %></url>
-    <title><%= @mini_feed.feed_name %></title>
+    <title><%= @mini_feed.name %></title>
     <link><%= tag_from_main("/rss/channel/link") %></link>
   </image>
   <% @episodes.each do |episode| %>

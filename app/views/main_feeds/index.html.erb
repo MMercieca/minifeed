@@ -1,13 +1,5 @@
-<h1 class="w-full block"><%= @main_feed.name %></h1>
-<table>
-  <tr>
-    <td>Feed Name</td>
-    <td>URL</td>
-  </tr>
+<div class="flex flex-row flex-wrap w-full">
   <% @mini_feeds.each do |feed| %>
-    <tr>
-      <td><%= feed.feed_name %></td>
-     <td><%= feed.url(request.protocol, request.host) %></td>
-    </tr>
+    <%= render partial: "/shared/card", locals: { feed: feed } %>
   <% end %>
-</ul>
+</div>

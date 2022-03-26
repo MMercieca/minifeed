@@ -2,9 +2,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="preload" href="/css/page.css" as="style">
-    <link rel="preconnect" href="https://unpkg.com/popper.js@1" as="script">
-    <link rel="preconnect" href="https://unpkg.com/tippy.js@4" as="script">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="MiniCast - A Podcast and RSS splitter">
     <meta name="author" content="Matt Mercieca">
@@ -14,45 +11,17 @@
     <meta property="og:description" content="MiniCast - A Podcast and RSS splitter">
     <meta property="og:url" content="/">
     <meta name="theme-color" content="#ffffff">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <title>MiniCast - A Podcast and RSS splitter</title>
-    <link rel="stylesheet" href="/css/page.css">
   </head>
   <body id="top" class="font-sans text-gray-800 bg-gray-100">
-    <div class="header w-full flex flex-col justify-between">
-      <nav class="flex flex-col sm:flex-row w-full justify-between items-center px-4 sm:px-6 py-1 bg-white sm:bg-transparent shadow sm:shadow-none">
-        <div class="w-full sm:w-auto self-start sm:self-center flex flex-row sm:flex-none flex-no-wrap justify-between items-center">
-          <a href="/" class="no-underline"><img src="/img/logo2.svg" alt="Logo" class="h-12 py-1"></a>
-          <button id="menuBtn" class="hamburger block sm:hidden focus:outline-none" type="button" onclick="navToggle();" aria-label="Show Menu">
-            <span class="hamburger__top-bun"></span><span class="hamburger__bottom-bun"></span>
-          </button></div><div id="menu" class="w-full sm:w-auto self-end sm:self-center hidden sm:flex flex-col sm:flex-row items-center h-full py-1 pb-4 sm:py-0 sm:pb-0">
-          <a class="text-gray-800 font-bold hover:text-purple-600 text-lg text-center w-full no-underline sm:w-auto sm:pr-4 py-2 sm:py-1" href="#about">About</a> 
-          <a class="text-gray-800 font-bold hover:text-purple-600 text-lg text-center w-full no-underline sm:w-auto sm:px-4 py-2 sm:py-1" href="#features">Features</a>
-          <a href="https://linkedin.com/company/#" class="text-gray-800 font-bold hover:text-purple-600 text-lg text-center w-full no-underline sm:hidden py-2" target="_blank" rel="noopener">LinkedIn</a>
+    <%= render partial: "/shared/header" %>
+    <main id="main" class="w-full flex flex-col m-h-body">
+      <div class="self-center w-full sm:w-2/3 sm:px:0 pt-16">
+        <div class="font-light text-black text-lg">
+          <%= yield %>
         </div>
-        
-      </nav>
-      <main id="main" class="w-full flex flex-col m-h-body">
-        <div class="self-center w-full sm:w-2/3 xl:w-1/2 px-4 sm:px:0 pt-16">
-          <div class="font-light text-black text-lg">
-            <%= yield %>
-          </div>
-        </div>
-      </main>
-    </div>
-    
-    <script src="https://unpkg.com/popper.js@1"></script>
-    <script src="https://unpkg.com/tippy.js@4"></script>
-    <script>
-      function navToggle() {
-        let btn = document.getElementById('menuBtn');
-        let nav = document.getElementById('menu');
-
-        btn.classList.toggle('open');
-        nav.classList.toggle('flex');
-        nav.classList.toggle('hidden');
-      }
-
-      console.log('I am not a designer.  Theme by: ttntm.me'); // credit where credit is due
-    </script>
+      </div>
+    </main>
   </body>
 </html>

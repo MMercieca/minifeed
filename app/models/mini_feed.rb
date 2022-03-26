@@ -1,6 +1,7 @@
 class MiniFeed < ApplicationRecord
   belongs_to :main_feed
   has_one_attached :image
+  default_scope { order(name: :asc) }
 
   def episodes(rss = nil)
     if !rss
@@ -20,7 +21,14 @@ class MiniFeed < ApplicationRecord
     episodes
   end
 
-  def url(protocol = "https", host = "minicast.app")
+  def polled_at
+    pubDate = episodes.first.elements.select { |e| e.name == "pubDate" }[0].text
+    return nil if pubDate.blank?
+    
+    DateTime.parse(pubDate)
+  end
+
+  def url(protocol = "https://", host = "minicast.app")
     "#{protocol}#{host}/feeds/#{main_feed.identifier}/#{id}.xml"
   end
 end
