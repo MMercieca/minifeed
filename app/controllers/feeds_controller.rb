@@ -1,6 +1,4 @@
 class FeedsController < ApplicationController
-  skip_before_action :authenticate_user!
-
   def show
     main_feed = MainFeed.find_by(identifier: params[:identifier])
     redirect_to "/404" unless main_feed
