@@ -21,7 +21,22 @@ class ApplicationController < ActionController::Base
   end
 
   def format_date(date)
+    return "?" unless date
     date.strftime("%B %d, %Y")
   end
   helper_method :format_date
+
+  def build_breadcrumbs(links)
+    breadcrumbs = ""
+
+    links.each do |link|
+      if link[0].nil?
+        breadcrumbs = "#{breadcrumbs} #{link[1]}"
+      else
+        breadcrumbs = "#{breadcrumbs} <a href='#{link[0]}'>#{link[1]}</a> &gt; "
+      end
+    end
+    breadcrumbs.html_safe
+  end
+  helper_method :build_breadcrumbs
 end

@@ -5,9 +5,17 @@ Rails.application.routes.draw do
   end
   ActiveAdmin.routes(self)
   
-  resources :main_feeds
-  post 'main_feed', to: 'main_feeds#create'
-  get 'main_feed', to: 'main_feeds#show'
+  resources :main_feeds do
+    post 'main_feed', to: 'main_feeds#create'
+    get  'main_feed', to: 'main_feeds#show'
+  end
+
+  resources :mini_feeds do
+    post  'mini_feed', to: 'mini_feeds#create'
+    patch 'mini_feed', to: 'mini_feeds#update'
+    get   'mini_feed', to: 'mini_feed#show'
+  end
+
   get 'known_feed', to: 'known_feeds#show'
   get 'register', to: 'home#register'
   get 'dashboard', to: 'home#dashboard'

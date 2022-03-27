@@ -22,6 +22,8 @@ class MiniFeed < ApplicationRecord
   end
 
   def polled_at
+    return nil unless episodes && episodes.count > 0
+
     pubDate = episodes.first.elements.select { |e| e.name == "pubDate" }[0].text
     return nil if pubDate.blank?
     

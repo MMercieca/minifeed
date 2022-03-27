@@ -1,0 +1,30 @@
+<% content_for :breadcrumbs do %>
+  <%= build_breadcrumbs([ ["/", "Dashboard"], [main_feeds_url(identifier: @main_feed.identifier), @main_feed.name], [nil, "New Mini Cast"] ]) %>
+<% end %>
+<div class="w-full">
+  <%= form_with url: mini_feeds_url, method: :post, locals: true do |f| %>
+    <%= f.hidden_field :identifier, value: @main_feed.identifier %>
+    <fieldset class="w-half border border-black p-5 rounded" style="border: 4px solid #1ac0c6">
+      <legend class="rounded-full background-white">New Mini Cast</legend>
+      <label for="name">Feed Name</label>
+      <br />
+      <div class="text-sm">This will appear on your dashboard and in your podcast player</div>
+      <%= f.text_field :name, class: "border border-black rounded rounded-full w-full px-4" %>
+      <br />
+      <br />
+      <label for="url" class="mt-10">Episode Identifier</label>
+      <div class="text-sm">Episodes in this mini-podcast feed have these words in the title</div>
+      <%= f.text_field :episode_prefix, class: "border border-black rounded rounded-full w-full px-4" %>
+      <br />
+      <br />
+      <label for="image" class="mt-10">Poster Image</label>
+      <div class="text-sm">This will show up on your dashboard and in your podcast player. The recommended size is square and at least 500x500 pixels.</div>
+      <%= f.file_field :image, class: "w-full" %>
+      <br />
+      <br />
+      <div class="w-full text-right">
+        <%= f.submit value: "Create New Mini Cast", class: "py-2 px-4 rounded rounded-full", style: "background-color: #1ac0c6; color: white"%>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
