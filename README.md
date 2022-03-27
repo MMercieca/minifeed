@@ -1,9 +1,10 @@
 # TODOMPM
 
 * Styles
-* Styles
+* Mini feed UI
+* Split feed by time
+* Copy feed to clipboard
 * Mail
-* Unknown feed UI
 * Tip jar?
 * KnownFeeds import/export
 * Homepage

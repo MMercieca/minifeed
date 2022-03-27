@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || dashboard_path
   end
+
+  def format_date(date)
+    date.strftime("%B %d, %Y")
+  end
+  helper_method :format_date
 end

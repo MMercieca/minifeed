@@ -1,13 +1,14 @@
-<div class="header w-full flex flex-col justify-between mt-2">
+<div class="header w-full flex flex-col justify-between pt-2" style="background-color: #dee0e6">
   <nav class="flex flex-row">
     <div class="flex self-start">
       <a href="/" class="no-underline"><img src="/img/logo.png" alt="miniCAST" class="h-16 px-4 py-1"></a>
     </div>
     <div class="flex self-end py-2 justify-end w-full">
-      <a class="flex justify-end font-bold text-lg text-center w-full no-underline sm:w-auto sm:pr-4 py-2 sm:py-1" href="#about">About</a> 
       <% if current_user %>
+        <a class="flex justify-end font-bold text-lg text-center w-full no-underline sm:w-auto sm:px-4 py-2 sm:py-1" href="/dashboard">Dashboard</a>
         <%= link_to "Sign Out", users_sign_out_path, method: :delete, class: "flex justify-end font-bold text-lg text-center w-full no-underline sm:w-auto sm:px-4 py-2 sm:py-1" %>
       <% else %>
+      <a class="flex justify-end font-bold text-lg text-center w-full no-underline sm:w-auto sm:pr-4 py-2 sm:py-1" href="#about">About</a> 
         <a class="flex justify-end font-bold text-lg text-center w-full no-underline sm:w-auto sm:px-4 py-2 sm:py-1" href="/register">Launch</a>
       <% end %>
     </div>

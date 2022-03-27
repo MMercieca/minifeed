@@ -12,14 +12,15 @@ class MainFeed < ApplicationRecord
   end
 
   def fetch
-    if polled_at.nil? || cached_feed.nil? || polled_at > 1.hour.ago 
+    if polled_at.nil? || cached_feed.nil? || polled_at < 1.hour.ago 
       feed_xml = URI.open(url).read
       self.polled_at = Time.zone.now
       self.cached_feed = feed_xml
       self.save
+      self.reload
     end
 
-    if image.attached?
+    if !self.image.attached?
       set_image_from_feed
     end
 
@@ -33,18 +34,17 @@ class MainFeed < ApplicationRecord
     self.image.attach(io: image, filename: 'logo.png')
   end
 
-  def setup_mini_feeds
+  def setup_known_mini_feeds
     feed = fetch
     
-    title = feed.xpath("//channel/link").text
-    known_feed = KnownFeed.known(title)
+    known_feed = KnownFeed.from_main_feed(self)
     if known_feed
       # copy known mini feeds to this feed
       known_feed.known_mini_feeds.each do |known_mini_feed|
         mini_feed = MiniFeed.create!(
           main_feed: self,
           episode_prefix: known_mini_feed.episode_prefix,
-          feed_name: known_mini_feed.feed_name,
+          name: known_mini_feed.name,
         )
         mini_feed.image.attach(known_mini_feed.image.blob)
         mini_feed.save

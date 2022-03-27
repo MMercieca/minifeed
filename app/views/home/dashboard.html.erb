@@ -1,11 +1,18 @@
-<% if @feeds.empty? %>
-  <p>No feeds loaded yet.  <a href="<%= new_main_feed_path %>">Load one?</a></p>
-<% end %>
-<% if !@feeds.empty? %>
-  
-  <% @feeds.each do |feed| %>
-    <a href="<%= main_feeds_url(identifier: feed.identifier) %>">
-      <%= render partial: "/shared/card", locals: { feed: feed } %>
-    </a>
+<div class="flex flex-row flex-wrap w-full">
+  <% if !@feeds.empty? %>
+    <% @feeds.each do |feed| %>
+        <%= render partial: "/shared/card", locals: { feed: feed, path: main_feeds_url(identifier: feed.identifier) } %>
+    <% end %>
   <% end %>
-<% end %>
+    <a class="flex lg:w-1/3 md:w-1/2 sm:w-full m-auto h-full mb-4 p-2 align-top" href="<%= new_main_feed_path %>">
+      <div class="border border-black w-full h-full m-auto">
+        <div style="width: 100%; text-align: center; padding-bottom: 100%; height: 200px;">
+          <i class="h-full fa-solid fa-circle-plus fa-10x" style="color: #1ac0c6; margin-top: 30px;"></i>
+        </div>
+        <div class="p-2">
+          <div class="text-xl text-center" style="min-height: 3em;">Add New Feed</div>
+          <div class="text-sm">&nbsp;</div>
+        </div>
+      </div>
+    </a>
+</div>

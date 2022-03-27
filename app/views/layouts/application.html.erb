@@ -13,11 +13,18 @@
     <meta name="theme-color" content="#ffffff">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <title>MiniCast - A Podcast and RSS splitter</title>
+    <script src="https://kit.fontawesome.com/87d9f919f8.js" crossorigin="anonymous"></script>
   </head>
   <body id="top" class="font-sans text-gray-800 bg-gray-100">
     <%= render partial: "/shared/header" %>
     <main id="main" class="w-full flex flex-col m-h-body">
       <div class="self-center w-full sm:w-2/3 sm:px:0 pt-16">
+        <div class="w-full">
+          <%= flash["error"] %>
+        </div>
+        <div class="w-full">
+          <%= flash["notice"] %>
+        </div>
         <div class="font-light text-black text-lg">
           <%= yield %>
         </div>

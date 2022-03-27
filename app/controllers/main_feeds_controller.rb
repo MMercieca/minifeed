@@ -15,13 +15,15 @@ class MainFeedsController < ApplicationController
       url: params[:url]
     )
     main_feed.save
-    main_feed.setup_mini_feeds
+    main_feed.fetch
+    main_feed.reload
     
-    redirect_to "/"
+    redirect_to known_feed_url(identifier: main_feed.identifier)
   end
 
   def index
     @main_feed = MainFeed.find_by(user: current_user, identifier: params[:identifier])
+
     @mini_feeds = @main_feed.mini_feeds
   end
 
