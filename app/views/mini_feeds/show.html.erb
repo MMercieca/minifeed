@@ -13,13 +13,23 @@
       <%= f.text_field :name, class: "border border-black rounded rounded-full w-full px-4" %>
       <br />
       <br />
+      <label for="itunes_season" class="mt-10">iTunes Season</label>
+      <div class="text-sm">Episodes from this iTunes season will make up this mini cast. Note: you don't need to use iTunes or Apple to use iTunes seasons.</div>
+      <%= f.number_field :itunes_season, class: "border border-black rounded rounded-full px-4" %>
+      <br />
+      <br />
       <label for="url" class="mt-10">Episode Identifier</label>
-      <div class="text-sm">Episodes in this mini-podcast feed have these words in the title</div>
+      <div class="text-sm">Episodes in this mini-podcast feed have these words in the title. Leave blank if using start or end dates.</div>
       <%= f.text_field :episode_prefix, class: "border border-black rounded rounded-full w-full px-4" %>
       <br />
       <br />
+      <label for="start_date" class="mt-10">Publication Dates</label>
+      <div class="text-sm">These episodes start and end on these dates, like a season of a television show.  Leave the start date blank to get all episodes before a specific date, or leave the end date blank to get all episodes after a specific day. Leave these blank to use an episode identifier.</div>
+      <%= f.date_field :start_date %> &nbsp; <%= f.date_field :end_date %>
+      <br />
+      <br />
       <label for="image" class="mt-10">Poster Image</label>
-      <div class="text-sm">This will show up on your dashboard and in your podcast player. The recommended size is square and at least 500x500 pixels.</div>
+      <div class="text-sm">This will show up on your dashboard and in your podcast player. The recommended size is square and at least 400x400 pixels.</div>
       <% if @mini_feed.image.attached? %>
         <img src="<%= @mini_feed.image.url %>" style="height: 150px">
       <% end %>

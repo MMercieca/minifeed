@@ -10,6 +10,9 @@ class MiniFeedsController < ApplicationController
     @mini_feed = MiniFeed.create!(
       main_feed: @main_feed,
       name: params[:name],
+      start_date: params[:start_date],
+      end_date: params[:end_date],
+      itunes_season: params[:itunes_season],
       episode_prefix: params[:episode_prefix]
     )
     unless params[:image].blank?
@@ -30,6 +33,18 @@ class MiniFeedsController < ApplicationController
 
     @mini_feed.name = params[:mini_feed][:name]
     @mini_feed.episode_prefix = params[:mini_feed][:episode_prefix]
+    @mini_feed.itunes_season = params[:mini_feed][:itunes_season]
+
+    unless params[:mini_feed][:start_date].blank?
+      date = Date.parse(params[:mini_feed][:start_date])
+      @mini_feed.start_date = date if date
+    end
+
+    unless params[:mini_feed][:end_date].blank?
+      date = Date.parse(params[:mini_feed][:end_date])
+      @mini_feed.end_date = date if date
+    end
+
     @mini_feed.save
 
     if params[:image]
@@ -41,6 +56,6 @@ class MiniFeedsController < ApplicationController
   end
 
   def mini_feed_params
-    params.permit(:id, :identifier, :name, :episode_prefix, :image)
+    params.permit(:id, :identifier, :name, :episode_prefix, :image, :start_date, :end_date, :itunes_season)
   end
 end
