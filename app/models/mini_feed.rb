@@ -34,10 +34,10 @@ class MiniFeed < ApplicationRecord
 
     all_episodes = rss.xpath("/rss/channel/item")
     all_episodes.each do |episode|
-      season = episode.xpath("itunes:season").text
+      season_text = episode.xpath("itunes:season").text
       next unless season
       
-      if season.downcase == season.downcase
+      if season_text.to_i == season
         episodes << episode
       end
     end

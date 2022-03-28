@@ -1,8 +1,6 @@
 # TODOMPM
 
 * Styles
-* Mini feed UI
-* Split feed by time
 * Default image
 * Error Handling
 * Copy feed to clipboard
