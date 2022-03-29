@@ -5,6 +5,11 @@ class MiniFeed < ApplicationRecord
 
   def ensure_feed_image
     if !self.image.attached?
+      if Rails.env.production?
+        IMGKit.configure do |config|
+          config.wkhtmltoimage = Rails.root.join("bin", "wkhtmltoimage")
+        end
+      end
       options = {'width': 400, 'disable-smart-width': ''}
       kit = IMGKit.new("<html style='width: 400px; height: 400px; overflow: none; font-family: sans-serif'>
                           <head><base href='/'></head>
