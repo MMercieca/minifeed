@@ -387,7 +387,7 @@ DEPENDENCIES
   web-console
   webdrivers
   wkhtmltoimage-binary
-  wkhtmltopdf-heroku (= 2.12.6.0)
+  wkhtmltopdf-heroku
 
 RUBY VERSION
    ruby 3.1.0p0

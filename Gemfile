@@ -53,13 +53,10 @@ gem "open-uri"
 gem "aws-sdk-s3", require: false
 gem "imgkit"
 gem "rexml"
+gem 'wkhtmltopdf-heroku'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-
-group :production do
-  gem 'wkhtmltopdf-heroku', '2.12.6.0'
-end
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
