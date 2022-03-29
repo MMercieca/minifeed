@@ -11,7 +11,7 @@
         <div class="text-sm">Last updated: <%= format_date(feed.polled_at) %></div>
       <% end %>
       <% if feed.is_a?(MiniFeed) %>
-        <textarea class="text-sm border border-black w-full px-2"><%= feed.url %></textarea>
+        <textarea class="text-sm w-full px-2" style="resize: none; background-color: transparent;" rows="3"><%= feed.url %></textarea>
       <% end %>
     </div>
   </div>

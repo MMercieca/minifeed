@@ -17,18 +17,30 @@
   </head>
   <body id="top" class="font-sans text-gray-800 bg-gray-100">
     <%= render partial: "/shared/header" %>
-    <main id="main" class="w-full flex flex-col m-h-body">
-      <div class="self-center w-full sm:w-2/3 sm:px:0 pt-16">
-        <div class="w-full">
-          <%= flash["error"] %>
-        </div>
-        <div class="w-full">
-          <%= flash["notice"] %>
-        </div>
+    <main id="main" class="w-full flex flex-col">
+      <div class="self-center w-full sm:w-2/3 sm:px:0 pt-8">
+        <% unless flash["error"].blank? %>
+          <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #ffa822;">
+            <div class="w-1/16" onClick="removeFlash(this)">X</div>
+            <div class="w-full"><%= flash["error"] %></div>
+          </div>
+        <% end %>
+        <% unless flash["notice"].blank? %>
+          <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #1ac0c6">
+            <div class="w-1/16" onClick="removeFlash(this)">X</div>  
+            <div class="w-full"><%= flash["notice"] %></div>
+          </div>
+        <% end %>
         <div class="font-light text-black text-lg">
           <%= yield %>
         </div>
       </div>
     </main>
+    <%= render partial: "/shared/footer" %>
   </body>
+  <script>
+    function removeFlash(el) {
+      el.parentElement.style.display = "none";
+    }
+  </script>
 </html>

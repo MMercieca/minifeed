@@ -28,6 +28,22 @@ class MainFeed < ApplicationRecord
     Nokogiri(feed_xml)
   end
 
+  def self.validate_feed_url(url)
+    begin
+      uri = URI.parse(url)
+    rescue URI::InvalidURIError
+      return false
+    end
+
+    feed_xml = URI.open(url).read
+    xml = Nokogiri(feed_xml)
+    if xml.xpath("/rss/channel").text.blank?
+      return false
+    end
+    
+    true
+  end
+
   def set_image_from_feed
     image_url = Nokogiri(self.cached_feed).xpath('/rss/channel/image/url').text
     image = URI.parse(image_url).open
@@ -40,6 +56,8 @@ class MainFeed < ApplicationRecord
     known_feed = KnownFeed.from_main_feed(self)
     if known_feed
       # copy known mini feeds to this feed
+      self.known_feed_id = known_feed.id
+      self.save
       known_feed.known_mini_feeds.each do |known_mini_feed|
         mini_feed = MiniFeed.create!(
           main_feed: self,

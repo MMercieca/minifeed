@@ -3,6 +3,26 @@ class MiniFeed < ApplicationRecord
   has_one_attached :image
   default_scope { order(name: :asc) }
 
+  def ensure_feed_image
+    if !self.image.attached?
+      img = Magick::ImageList.new(Rails.root.join("public", "img", "blank.png"))
+
+      text = Magick::Draw.new
+      message = self.name
+      
+      img.annotate(text, 250,250,50,50, message) do
+        text.gravity = Magick::CenterGravity # Text positioning
+        text.pointsize = 100 # Font size
+        text.fill = "#ff6150" # Font color
+        # text.font = "/absolutepath/Font.ttf" # Font file; needs to be absolute
+        img.format = "png"
+      end
+      temp_file = Tempfile.new("#{self.name}.png")
+      img.write(temp_file.path)
+      self.image.attach(io: temp_file, filename: "#{self.name}.png", content_type: "image/png")
+    end
+  end
+
   def episodes(rss = nil)
     if !rss
       rss = main_feed.fetch
@@ -105,7 +125,7 @@ class MiniFeed < ApplicationRecord
     all_episodes = rss.xpath("/rss/channel/item")
     all_episodes.each do |episode|
       title = episode.xpath("title").text
-      if title.starts_with?(episode_prefix)
+      if title.include?(episode_prefix)
         episodes << episode
       end
     end

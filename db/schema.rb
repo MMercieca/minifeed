@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_27_234613) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_28_224001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_27_234613) do
     t.bigint "user_id"
     t.string "identifier"
     t.xml "cached_feed"
+    t.bigint "known_feed_id"
   end
 
   create_table "mini_feeds", force: :cascade do |t|

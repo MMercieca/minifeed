@@ -19,6 +19,8 @@ class MiniFeedsController < ApplicationController
       @mini_feed.image.attach(params[:image])
     end
 
+    @mini_feed.ensure_feed_image
+
     redirect_to mini_feed_url(identifier: @main_feed.identifier, id: @mini_feed.id)
   end
 
@@ -30,6 +32,19 @@ class MiniFeedsController < ApplicationController
   def update
     @main_feed = MainFeed.find_by(identifier: params[:mini_feed][:identifier])
     @mini_feed = MiniFeed.find_by(main_feed: @main_feed, id: params[:mini_feed][:id])
+    
+    if !@main_feed || !@mini_feed
+      flash["error"] = "Cast not found"
+      redirect_to "/dashboard"
+      return
+    end
+
+    if params[:commit].include?("Delete")
+      flash["notice"] = "#{@mini_feed.name} deleted."
+      @mini_feed.destroy
+      redirect_to main_feeds_url(identifier: @main_feed.identifier) 
+      return
+    end
 
     @mini_feed.name = params[:mini_feed][:name]
     @mini_feed.episode_prefix = params[:mini_feed][:episode_prefix]
@@ -50,6 +65,8 @@ class MiniFeedsController < ApplicationController
     if params[:image]
       @min_feed.image.attach(params[:mini_feed][:image])
     end
+
+    @mini_feed.ensure_feed_image
 
     flash[:notice] = "Saved"
     redirect_to mini_feed_url(identifier: @main_feed.identifier, id: @mini_feed.id)

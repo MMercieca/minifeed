@@ -9,6 +9,13 @@ class MainFeedsController < ApplicationController
   end
 
   def create
+    if !MainFeed.validate_feed_url(params[:url])
+      flash[:error] = "That does not appear to be an RSS feed.  Did you link to the podcast web page by mistake?"
+      @main_feed = MainFeed.new(user: current_user)
+      render :new, locals: { main_feed: @main_feed }
+      return false
+    end
+
     main_feed = MainFeed.new(
       user: current_user,
       name: params[:name],
