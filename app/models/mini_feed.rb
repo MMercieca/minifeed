@@ -5,11 +5,6 @@ class MiniFeed < ApplicationRecord
 
   def ensure_feed_image
     if !self.image.attached?
-      if Rails.env.production?
-        IMGKit.configure do |config|
-          config.wkhtmltoimage = Rails.root.join("bin", "wkhtmltoimage")
-        end
-      end
       options = {'width': 400, 'disable-smart-width': ''}
       kit = IMGKit.new("<html style='width: 400px; height: 400px; overflow: none; font-family: sans-serif'>
                           <head><base href='/'></head>
@@ -20,7 +15,7 @@ class MiniFeed < ApplicationRecord
                             <h1 style='width: 100%; font-size: 3em; position: absolute; top: 30%; text-align: center; display: block'>#{self.name}</h1>
                           </body>
                        </html>", options)
-      img = kit.to_img(:png)
+      img = kit.to_img(:png, wkhtmltoimage: Rails.root.join("bin", "wkhtmltoimage"))
       temp_file = Tempfile.new("#{SecureRandom.uuid}-#{self.name}.png")
       kit.to_file(temp_file.path)
       self.image.attach(io: temp_file, filename: "#{self.name}.png", content_type: "image/png")
