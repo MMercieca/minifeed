@@ -1,5 +1,6 @@
 # TODOMPM
 
+* Default image
 * Copy feed to clipboard
 * Launch page styling
 * Homepage
