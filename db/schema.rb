@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_28_224001) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_29_210753) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +83,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_28_224001) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "itunes_season"
     t.index ["known_feed_id"], name: "index_known_mini_feeds_on_known_feed_id"
   end
 
