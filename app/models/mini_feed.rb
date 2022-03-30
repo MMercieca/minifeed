@@ -14,7 +14,7 @@ class MiniFeed < ApplicationRecord
                             </div>
                             <h1 style='width: 100%; font-size: 3em; position: absolute; top: 30%; text-align: center; display: block'>#{self.name}</h1>
                           </body>
-                       </html>". width: 400, height: 400)
+                       </html>", width: 400, height: 400)
       img = kit.to_img(:png)
       self.image.attach(io: StringIO.new(img.to_s), filename: "#{self.name}.png", content_type: "image/png")
     end
