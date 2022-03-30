@@ -5,8 +5,8 @@ class MiniFeed < ApplicationRecord
 
   def ensure_feed_image
     if !self.image.attached?
-      options = {'width': 400, 'disable-smart-width': ''}
-      kit = IMGKit.new("<html style='width: 400px; height: 400px; overflow: none; font-family: sans-serif'>
+      options = {'width': 400, 'height': 400, 'disable-smart-width': ''}
+      kit = IMGKit.new("<html charset='utf-8' style='width: 400px; height: 400px; overflow: none; font-family: sans-serif'>
                           <head><base href='/'></head>
                           <body style='background-color: #134e6f; color: white'>
                             <div style='width: 100% top: 0; padding-top: 10px;'>
@@ -14,7 +14,7 @@ class MiniFeed < ApplicationRecord
                             </div>
                             <h1 style='width: 100%; font-size: 3em; position: absolute; top: 30%; text-align: center; display: block'>#{self.name}</h1>
                           </body>
-                       </html>", options)
+                       </html>")
       img = kit.to_img(:png)
       self.image.attach(io: StringIO.new(img.to_s), filename: "#{self.name}.png", content_type: "image/png")
     end
