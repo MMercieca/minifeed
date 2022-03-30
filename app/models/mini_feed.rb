@@ -16,7 +16,7 @@ class MiniFeed < ApplicationRecord
                           </body>
                        </html>", options)
       img = kit.to_img(:png)
-      self.image.attach(io: StringIO.new(img), filename: "#{self.name}.png", content_type: "image/png")
+      self.image.attach(io: StringIO.new(img.to_s), filename: "#{self.name}.png", content_type: "image/png")
     end
   end
 
