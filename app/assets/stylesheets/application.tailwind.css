@@ -24,3 +24,12 @@ input[type=text] {
 text-blue {
   color: #134e6f;
 }
+
+a:hover {
+  cursor: pointer;
+}
+
+input[type=submit]:hover, input[type=button]:hover {
+  cursor: pointer;
+  border: 10px solid red;
+}
