@@ -15,10 +15,8 @@ class MiniFeed < ApplicationRecord
                             <h1 style='width: 100%; font-size: 3em; position: absolute; top: 30%; text-align: center; display: block'>#{self.name}</h1>
                           </body>
                        </html>", options)
-      img = kit.to_img(:png, wkhtmltoimage: Rails.root.join("bin", "wkhtmltoimage"))
-      temp_file = Tempfile.new("#{SecureRandom.uuid}-#{self.name}.png")
-      kit.to_file(temp_file.path)
-      self.image.attach(io: temp_file, filename: "#{self.name}.png", content_type: "image/png")
+      img = kit.to_img(:png)
+      self.image.attach(io: StringIO.new(img), filename: "#{self.name}.png", content_type: "image/png")
     end
   end
 
