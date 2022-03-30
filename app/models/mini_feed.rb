@@ -6,7 +6,8 @@ class MiniFeed < ApplicationRecord
   def ensure_feed_image
     if !self.image.attached?
       options = {'width': 400, 'height': 400, 'disable-smart-width': ''}
-      kit = IMGKit.new("<html charset='utf-8' style='width: 400px; height: 400px; overflow: none; font-family: sans-serif'>
+      kit = IMGKit.new("<html width='400' height='400' charset='utf-8' style='width: 400px; height: 400px; overflow: none; font-family: sans-serif'>
+                          <meta name='viewport; content='width=400, initial-scale=1'>
                           <head><base href='/'></head>
                           <body style='background-color: #134e6f; color: white'>
                             <div style='width: 100% top: 0; padding-top: 10px;'>
