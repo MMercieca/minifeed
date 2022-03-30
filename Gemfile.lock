@@ -348,7 +348,6 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    wkhtmltoimage-binary (0.12.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.5.4)
@@ -385,7 +384,6 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
-  wkhtmltoimage-binary
 
 RUBY VERSION
    ruby 3.1.0p0
