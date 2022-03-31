@@ -2,34 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
-}
-
-*/
-
-label {
-  font-weight: bold;
-  display: block;
-}
-
-input[type=text] {
-  margin-bottom: 15px;
-}
-
-text-blue {
-  color: #134e6f;
-}
-
-a:hover {
+.btn:hover {
   cursor: pointer;
 }
 
-input[type=submit]:hover, input[type=button]:hover {
+a, a.link, a.visited {
+  text-decoration: none !important;
+}
+
+.card:hover {
+  /* box-shadow: 0 5px 15px rgba(255, 97, 80, .4); */
+  box-shadow: 0 5px 15px rgba(18, 87, 127, .4);
   cursor: pointer;
-  border: 10px solid red;
+}
+
+.blue-glow {
+  box-shadow: 0 5px 15px rgba(18, 87, 127, 0);
+  cursor: pointer;
+}
+.blue-glow:hover {
+  /* 12577e */
+  box-shadow: 0 5px 15px rgba(18, 87, 127, .4);
+  cursor: pointer;
+}
+
+.notice {
+  transition: all 1s ease;
+  padding-left: 2px;
+  padding-right: 2px;
+  background-color: #f9fafb;
+  border: 1px solid gray;
 }

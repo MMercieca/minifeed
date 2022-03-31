@@ -19,7 +19,7 @@ module Minicast
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # TODOMPM - fix tailwind
+    # TODOMPM - Why is this necessary?
     config.assets.css_compressor = nil
   end
 end

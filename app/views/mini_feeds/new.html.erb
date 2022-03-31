@@ -1,11 +1,11 @@
 <% content_for :breadcrumbs do %>
-  <%= build_breadcrumbs([ ["/", "Dashboard"], [main_feeds_url(identifier: @main_feed.identifier), @main_feed.name], [nil, "New Mini Cast"] ]) %>
+  <%= build_breadcrumbs([ ["/dashboard", "Dashboard"], [main_feeds_url(identifier: @main_feed.identifier), @main_feed.name], [nil, "New Mini Cast"] ]) %>
 <% end %>
-<div class="w-full">
-  <%= form_with url: mini_feeds_url, method: :post, locals: true do |f| %>
+<div class="w-full border border-dark-blue border-4 rounded rounded-lg px-4 bg-white">
+  <%= form_with url: mini_feeds_url, method: :post, id: "new_mini_cast", locals: true do |f| %>
     <%= f.hidden_field :identifier, value: @main_feed.identifier %>
-    <fieldset class="w-half border border-black p-5 rounded" style="border: 4px solid #1ac0c6">
-      <legend class="rounded-full background-white">New Mini Cast</legend>
+    <fieldset class="w-half">
+      
       <label for="name">Feed Name</label>
       <br />
       <div class="text-sm">This will appear on your dashboard and in your podcast player</div>
@@ -14,7 +14,7 @@
       <br />
       <label for="itunes_season" class="mt-10">iTunes Season</label>
       <div class="text-sm">Episodes from this iTunes season will make up this mini cast. Note: you don't need to use iTunes or Apple to use iTunes seasons.</div>
-      <%= f.number_field :itunes_season, class: "border border-black rounded rounded-full px-4" %>
+      <%= f.number_field :itunes_season, class: "border border-black rounded rounded-full px-4 w-1/4", style: "width: 25%" %>
       <br />
       <br />
       <label for="url" class="mt-10">Episode Identifier</label>
@@ -24,7 +24,7 @@
       <br />
       <label for="start_date" class="mt-10">Publication Dates</label>
       <div class="text-sm">These episodes start and end on these dates, like a season of a television show.  Leave the start date blank to get all episodes before a specific date, or leave the end date blank to get all episodes after a specific day. Leave these blank to use an episode identifier.</div>
-      <%= f.date_field :start_date %> &nbsp; <%= f.date_field :end_date %>
+      <%= f.date_field :start_date, style: "width: 25%" %> &nbsp; <%= f.date_field :end_date, style: "width: 25%" %>
       <br />
       <br />
       <label for="image" class="mt-10">Poster Image</label>
@@ -32,9 +32,9 @@
       <%= f.file_field :image, class: "w-full" %>
       <br />
       <br />
-      <div class="w-full text-right">
-        <%= f.submit value: "Create New Mini Cast", class: "py-2 px-4 rounded rounded-full", style: "background-color: #1ac0c6; color: white"%>
-      </div>
+      <p class="blue-glow btn w-1/4 text-center text-sm uppercase bg-dark-blue text-white font-bold py-2 px-4" onClick="document.getElementById('new_mini_cast').submit()">Save Mini Cast</p>
+      <%= f.submit value: "Create New Mini Cast", style: "display: none"%>
+      
     </fieldset>
   <% end %>
 </div>

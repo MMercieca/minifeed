@@ -13,8 +13,11 @@ ActiveAdmin.register KnownMiniFeed do
     selectable_column
     id_column
     column :known_feed
+    column :name
     column :episode_prefix
-    column :feed_name
+    column :itunes_season
+    column :start_date
+    column :end_date
     column :image do |i|
       if i.image.attached?
         "<img width='100' src='#{url_for(i.image.url)}' />".html_safe
@@ -26,8 +29,11 @@ ActiveAdmin.register KnownMiniFeed do
   form do |f|
     f.inputs do
       f.input :known_feed
-      f.input :feed_name
+      f.input :name
       f.input :episode_prefix
+      f.input :itunes_season
+      f.input :start_date
+      f.input :end_date
       f.input :image, as: :file
     end
     f.actions

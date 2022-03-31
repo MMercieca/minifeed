@@ -1,19 +1,21 @@
-<div class="header w-full flex flex-col justify-between pt-2" style="background-color: #dee0e6">
-  <nav class="flex flex-row">
-    <div class="flex self-start">
-      <a href="/" class="no-underline"><img src="/img/logo.png" alt="miniCAST" class="h-16 px-4 py-1"></a>
-    </div>
-    <div class="flex self-end py-2 justify-end w-full">
+<nav class="fixed z-50 w-full bg-white top-0 flex flex-wrap items-center justify-between px-2 py-3 shadow-lg">
+  <div class="flex justify-between lg:w-auto lg:static lg:block lg:justify-start px-20">
+    <a class="text-lg font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700" href="/">MINICAST</a>
+    <% if show_dashboard_link? %>
+      <span class='text-m font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700'><a href="/dashboard">Dashboard</a></span>
+    <% end %>
+    <%= yield :breadcrumbs %>
+  </div>
+      
+  <div class="flex justify-between lg:w-auto lg:static lg:block lg:justify-end px-20">
+    <span class="flex-end">
       <% if current_user %>
-        <a class="flex justify-end font-bold text-lg text-center w-full no-underline sm:w-auto sm:px-4 py-2 sm:py-1" href="/dashboard">Dashboard</a>
-        <%= link_to "Sign Out", users_sign_out_path, method: :delete, class: "flex justify-end font-bold text-lg text-center w-full no-underline sm:w-auto sm:px-4 py-2 sm:py-1" %>
+        <%= link_to "Sign Out", users_sign_out_path, method: :delete, class: "text-m font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700" %>
       <% else %>
-      <a class="flex justify-end font-bold text-lg text-center w-full no-underline sm:w-auto sm:pr-4 py-2 sm:py-1" href="#about">About</a> 
-        <a class="flex justify-end font-bold text-lg text-center w-full no-underline sm:w-auto sm:px-4 py-2 sm:py-1" href="/register">Launch</a>
+        <a class="text-m font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700" href="/register">
+          Launch
+        </a>
       <% end %>
-    </div>
-  </nav>
-</div>
-<div class="ml-4" style="color: #134e6f">
-  <%= yield :breadcrumbs %>
-</div>
+    </span>
+  </div>
+</nav>

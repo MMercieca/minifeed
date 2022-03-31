@@ -29,8 +29,23 @@ Rails.application.configure do
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
+  # Do not fallback to assets pipeline if a config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.smtp_settings = { address: 'localhost', port: 1025}d asset is missed.
   config.assets.compile = false
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "https://minicast.app" }
+  if ENV["SENDGRID_API_KEY"].present?
+    config.action_mailer.smtp_settings = {
+      address: "smtp.sendgrid.net",
+      port: 587,
+      authentication: :plain,
+      user_name: "apikey",
+      password: ENV["SENDGRID_API_KEY"],
+      domain: "heroku.com",
+      enable_starttls_auto: true
+    }
+  end
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"

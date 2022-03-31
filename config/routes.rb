@@ -19,6 +19,12 @@ Rails.application.routes.draw do
   get 'known_feed', to: 'known_feeds#show'
   get 'register', to: 'home#register'
   get 'dashboard', to: 'home#dashboard'
+  get 'privacy', to: 'home#privacy'
+  get 'legal', to: 'home#legal'
+  get 'terms', to: 'home#terms'
+  get 'about', to: 'home#about'
+  get 'contact', to: 'home#contact'
+  post 'send_feedback', to: 'home#send_feedback'
 
   match '/feeds/:identifier/setup_known_feed', to: 'known_feeds#setup_known_feed', via: :get
   match '/feeds/:identifier/:id', to: 'feeds#show', via: :get

@@ -39,7 +39,7 @@ class MiniFeedsController < ApplicationController
       return
     end
 
-    if params[:commit].include?("Delete")
+    if params[:commit] && params[:commit].include?("Delete")
       flash["notice"] = "#{@mini_feed.name} deleted."
       @mini_feed.destroy
       redirect_to main_feeds_url(identifier: @main_feed.identifier) 
@@ -62,8 +62,8 @@ class MiniFeedsController < ApplicationController
 
     @mini_feed.save
 
-    if params[:image]
-      @min_feed.image.attach(params[:mini_feed][:image])
+    if params[:mini_feed][:image]
+      @mini_feed.image.attach(params[:mini_feed][:image])
     end
 
     @mini_feed.ensure_feed_image

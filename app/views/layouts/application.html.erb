@@ -10,28 +10,31 @@
     <meta property="og:title" content="MiniCast - A Podcast and RSS splitter">
     <meta property="og:description" content="MiniCast - A Podcast and RSS splitter">
     <meta property="og:url" content="/">
-    <meta name="theme-color" content="#ffffff">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <title>MiniCast - A Podcast and RSS splitter</title>
     <script src="https://kit.fontawesome.com/87d9f919f8.js" crossorigin="anonymous"></script>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
-  <body id="top" class="font-sans text-gray-800 bg-gray-100">
+  <body id="top" class="font-sans text-gray-800 bg-gray-100 pb-16 bg-light-gray">
     <%= render partial: "/shared/header" %>
     <main id="main" class="w-full flex flex-col">
-      <div class="self-center w-full sm:w-2/3 sm:px:0 pt-8">
-        <% unless flash["error"].blank? %>
-          <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #ffa822;">
-            <div class="w-1/16" onClick="removeFlash(this)">X</div>
-            <div class="w-full"><%= flash["error"] %></div>
-          </div>
-        <% end %>
-        <% unless flash["notice"].blank? %>
-          <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #1ac0c6">
-            <div class="w-1/16" onClick="removeFlash(this)">X</div>  
-            <div class="w-full"><%= flash["notice"] %></div>
-          </div>
-        <% end %>
-        <div class="font-light text-black text-lg">
+      <div class="self-center w-full sm:w-2/3 sm:px:0">
+        <div class="font-light text-black text-lg pt-24">
+          <% unless flash["error"].blank? %>
+            <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #ffa822;">
+              <div class="w-1/16" onClick="removeFlash(this)">X</div>
+              <div class="w-full"><%= flash["error"] %></div>
+            </div>
+          <% end %>
+          <% unless flash["notice"].blank? %>
+            <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #1ac0c6">
+              <div class="w-1/16" onClick="removeFlash(this)">X</div>  
+              <div class="w-full"><%= flash["notice"] %></div>
+            </div>
+          <% end %>
           <%= yield %>
         </div>
       </div>
@@ -43,4 +46,19 @@
       el.parentElement.style.display = "none";
     }
   </script>
+  <% flash[:error] = ''; flash[:notice] = '' %>
+  <script>
+  function copyToClipboard(data, notice) {
+    navigator.clipboard.writeText(data).then(function() {
+      el = document.getElementById('feed-' + notice);
+      el.style.opacity = '1';
+      setTimeout(fadeOut.bind(null, el), 1000);
+    });
+    
+  }
+
+  function fadeOut(el) {
+    el.style.opacity = '0';
+  }
+</script>
 </html>
