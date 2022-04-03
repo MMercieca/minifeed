@@ -45,6 +45,7 @@ gem "bootsnap", require: false
 gem 'activeadmin'
 gem 'devise'
 gem 'omniauth-google-oauth2'
+gem 'patreon'
 
 # Use Sass to process CSS
 gem "sassc-rails"
