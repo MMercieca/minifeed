@@ -6,6 +6,9 @@ ActiveAdmin.register User do
     id_column
     column :name
     column :email
+    column 'Feeds' do |u|
+      u.main_feeds.pluck(:name).join(",")
+    end
     actions
   end
 
