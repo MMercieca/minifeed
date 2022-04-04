@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'
   post 'send_feedback', to: 'home#send_feedback'
+  get 'error', to: 'home#error'
 
   match '/feeds/:identifier/setup_known_feed', to: 'known_feeds#setup_known_feed', via: :get
   match '/feeds/:identifier/:id', to: 'feeds#show', via: :get
