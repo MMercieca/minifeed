@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
     ActiveStorage::Current.host = 'http://localhost:3000' if Rails.env.development?
   end
 
+  # unless Rails.application.config.consider_all_requests_local
+  #   rescue_from Exception, with: :render_500
+  # end
+
+  # def render_500(exception)
+  #   # logger.
+  # end
+
   def authenticate_admin!
     return not_found unless current_user && current_user.is_admin?
   end
