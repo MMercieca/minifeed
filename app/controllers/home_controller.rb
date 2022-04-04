@@ -14,7 +14,9 @@ class HomeController < ApplicationController
   end
 
   def send_feedback
-    FeedbackMailer.send_feedback(current_user, params[:content]).deliver_now
+    user = current_user if current_user
+    FeedbackMailer.send_feedback(user, params[:content]).deliver_now
+
     flash[:notice] = "Feedback sent"
     render "contact"
   end
