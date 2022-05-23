@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :send_feedback, :dashboard]
+  before_action :authenticate_user!, only: [:index, :dashboard]
   
   def home
   end
@@ -14,8 +14,9 @@ class HomeController < ApplicationController
   end
 
   def send_feedback
-    return unless current_user
-    FeedbackMailer.send_feedback(current_user, params[:content]).deliver_now
+    user = current_user if current_user
+    FeedbackMailer.send_feedback(user, params[:content]).deliver_now
+
     flash[:notice] = "Feedback sent"
     render "contact"
   end

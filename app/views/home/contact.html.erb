@@ -1,12 +1,10 @@
-<% if current_user %>
-  <p>You may use the form below to send an email from your account.</p>
-  <%= form_with url: '/send_feedback', method: :post, id: "contact_form", locals: true do |f| %>
-    <%= f.text_area 'content', style: 'width: 100%; min-height: 300px' %><br />
-    <p class="blue-glow w-1/4 text-center bg-dark-blue uppercase text-sm  text-white font-bold py-2 px-4" onClick="document.getElementById('contact_form').submit()">Send Feedback</p>
-    <%= f.submit value: "Send Feedback", style: "display: none"%>
-  <% end %>
-  <br />
+<p>You may use the form below to send any feedback you may have.</p>
+<%= form_with url: '/send_feedback', method: :post, id: "contact_form", locals: true do |f| %>
+  <%= f.text_area 'content', style: 'width: 100%; min-height: 300px' %><br />
+  <p class="blue-glow w-1/4 text-center bg-dark-blue uppercase text-sm  text-white font-bold py-2 px-4" onClick="document.getElementById('contact_form').submit()">Send Feedback</p>
+  <%= f.submit value: "Send Feedback", style: "display: none"%>
 <% end %>
+<br />
 <p>To cut down on unsolicited emails, I use third parties to verify that the people wanting to contact me are human. 
 If you do not have an account, or do not wish to create an account, you can contact me through:</p>
 <ul>

@@ -1,55 +1,39 @@
 <% content_for :breadcrumbs do %>
   <%= build_breadcrumbs([ ["/dashboard", "Dashboard"], [main_feeds_url(identifier: @main_feed.identifier), @main_feed.name], [nil, @mini_feed.name] ]) %>
 <% end %>
-<div class="w-full border border-dark-blue border-4 rounded rounded-lg px-4 bg-white">
-  <%= form_with model: @mini_feed, method: :patch, id: "save_mini_cast", locals: true do |f| %>
-    <%= f.hidden_field :identifier, value: @main_feed.identifier %>
-    <%= f.hidden_field :id, value: @mini_feed.id %>
-    <fieldset class="w-half">
+
+<p>URL for Podcast Players: <%= @mini_feed.url %></p>
+<p><a href="/feeds/<%= @main_feed.identifier %>/<%= @mini_feed.id %>">Settings</a></p>
+<% @episodes.each_with_index do |ep, i| %>
+  <% episode = Episode.new(ep) %>
+  <div class="flex border border-black w-full mb-4 p-4">
+    <div style="width: 150px; height: 150px; display: inline-block; background-size: cover; background-image: url('<%= @mini_feed.image.url %>')">
      
-      <label for="name">Feed Name</label>
+    </div>
+    <div style="width: 60%; margin-left: 10px; display: inline-block;">
+      <h3><%= episode.title %></h3>
+      <%= episode.description.html_safe %>
       <br />
-      <div class="text-sm">This will appear on your dashboard and in your podcast player</div>
-      <%= f.text_field :name, class: "border border-black rounded rounded-full w-full px-4" %>
-      <br />
-      <br />
-      <label for="name">URL</label>
-      <br />
-      <div class="text-sm">The mini cast URL. Load this in to your podcast player. <span class='notice' style='opacity: 0' class='border border-gray px-2 text-sm bg-light-gray' id='feed-<%= @mini_feed.id %>'>Copied</span></div>
-      <%= f.text_field 'feed-url', class: "border border-black rounded rounded-full w-full px-4", value: @mini_feed.url, readonly: true, onclick: "copyToClipboard('#{@mini_feed.url}', #{@mini_feed.id});" %>
-      <br />
-      <br />
-      <label for="itunes_season" class="mt-10">iTunes Season</label>
-      <div class="text-sm">Episodes from this iTunes season will make up this mini cast. Note: you don't need to use iTunes or Apple to use iTunes seasons.</div>
-      <%= f.number_field :itunes_season, class: "border border-black rounded rounded-full px-4", style: "width: 25%" %>
-      <br />
-      <br />
-      <label for="url" class="mt-10">Episode Identifier</label>
-      <div class="text-sm">Episodes in this mini-podcast feed have these words in the title. Leave blank if using start or end dates.</div>
-      <%= f.text_field :episode_prefix, class: "border border-black rounded rounded-full w-full px-4" %>
-      <br />
-      <br />
-      <label for="start_date" class="mt-10">Publication Dates</label>
-      <div class="text-sm">These episodes start and end on these dates, like a season of a television show.  Leave the start date blank to get all episodes before a specific date, or leave the end date blank to get all episodes after a specific day. Leave these blank to use an episode identifier.</div>
-      <%= f.date_field :start_date, style: "width: 25%" %> &nbsp; <%= f.date_field :end_date, style: "width: 25%" %>
-      <br />
-      <br />
-      <label for="image" class="mt-10">Poster Image</label>
-      <div class="text-sm">This will show up on your dashboard and in your podcast player. The recommended size is square and at least 400x400 pixels.</div>
-      <% if @mini_feed.image.attached? %>
-        <img src="<%= @mini_feed.image.url %>" style="height: 150px">
-      <% end %>
-      <%= f.file_field :image, class: "w-full mt-1" %>
-      <br />
-      <br />
-      <div class="flex w-full">
-        <%= f.submit value: "Delete Mini Cast", style: "display: none", id: "delete_mini_cast" %>
-        <%= f.submit value: "Save Mini Cast", style: "display: none" %>
-        <div class="blue-glow w-1/4 text-center uppercase bg-dark-blue text-sm text-white font-bold py-2 px-4" onClick="document.getElementById('save_mini_cast').submit()">Save Mini Cast</div>
-        &nbsp; &nbsp; 
-        <div class="card w-1/4 text-center text-sm uppercase bg-orange text-white font-bold py-2 px-4" onClick="document.getElementById('delete_mini_cast').click()" style="text-align: center">Delete Mini Cast</div>
-        
+      <a class="blue-glow w-1/4 text-center uppercase bg-dark-blue text-sm text-white font-bold py-2 px-4"
+        style="color: white" id="set_<%= i %>" href="javascript:play(<%= i %>, '<%= episode.url %>')">Play</a>
+      <div id="play_<%= i %>">
       </div>
-    </fieldset>
-  <% end %>
-</div>
+    </div>
+  </div>
+<% end %>
+<script>
+  function play(i, url) {
+    controls = document.createElement('audio');
+    controls.controls = "controls";
+    controls.preload = "auto";
+    source = document.createElement('source');
+    source.src = url;
+    source.type = "audio/mpeg";
+    controls.appendChild(source);
+    player = document.getElementById('play_' + i);
+    player.appendChild(controls);
+
+    button = document.getElementById('set_' + i);
+    button.style.display="none"; 
+  }
+</script>

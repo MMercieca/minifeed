@@ -141,4 +141,8 @@ class MiniFeed < ApplicationRecord
   def url(protocol = "https://", host = "minicast.app")
     "#{protocol}#{host}/feeds/#{main_feed.identifier}/#{id}.xml"
   end
+
+  def formatted
+    @formatted ||= Episode.new(xpath)
+  end
 end

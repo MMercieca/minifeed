@@ -24,9 +24,16 @@ class MiniFeedsController < ApplicationController
     redirect_to mini_feed_url(identifier: @main_feed.identifier, id: @mini_feed.id)
   end
 
+  def edit
+    @main_feed = MainFeed.find_by(identifier: params[:identifier])
+    @mini_feed = MiniFeed.find_by(main_feed: @main_feed, id: params[:id])
+  end
+
   def show
     @main_feed = MainFeed.find_by(identifier: params[:identifier])
     @mini_feed = MiniFeed.find_by(main_feed: @main_feed, id: params[:id])
+
+    @episodes = @mini_feed.episodes
   end
 
   def update

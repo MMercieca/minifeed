@@ -1,3 +1,7 @@
+<% if @user %>
 Feedback from <%= @user.name %>, <%= @user.email %>
+<% else %>
+Feedback from unknown
+<% end %>
 
 <%= @content %>

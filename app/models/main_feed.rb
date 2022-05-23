@@ -63,6 +63,9 @@ class MainFeed < ApplicationRecord
           main_feed: self,
           episode_prefix: known_mini_feed.episode_prefix,
           name: known_mini_feed.name,
+          itunes_season: known_mini_feed.itunes_season,
+          start_date: known_mini_feed.start_date,
+          end_date: known_mini_feed.end_date
         )
         mini_feed.image.attach(known_mini_feed.image.blob)
         mini_feed.save
