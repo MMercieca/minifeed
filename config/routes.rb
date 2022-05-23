@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   resources :mini_feeds do
     post  'mini_feed', to: 'mini_feeds#create'
     patch 'mini_feed', to: 'mini_feeds#update'
-    get   'mini_feed', to: 'mini_feed#show'
   end
 
+  get '/feeds/:identifier/:id', to: 'mini_feeds#edit'
+  match '/feeds/:identifier/episodes/:id', to: 'mini_feeds#show', via: :get
+  
   get 'known_feed', to: 'known_feeds#show'
   get 'register', to: 'home#register'
   get 'dashboard', to: 'home#dashboard'
