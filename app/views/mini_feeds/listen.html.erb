@@ -1,0 +1,39 @@
+<% content_for :breadcrumbs do %>
+  <%= build_breadcrumbs([ ["/dashboard", "Dashboard"], [main_feeds_url(identifier: @main_feed.identifier), @main_feed.name], [nil, @mini_feed.name] ]) %>
+<% end %>
+
+<p>URL for Podcast Players: <%= @mini_feed.url %></p>
+<p><a href="/mini_feeds/<%= @mini_feed.id %>?identifier=<%= @main_feed.identifier %>">Settings</a></p>
+<% @episodes.each_with_index do |ep, i| %>
+  <% episode = Episode.new(ep) %>
+  <div class="flex border border-black w-full mb-4 p-4">
+    <div style="width: 150px; height: 150px; display: inline-block; background-size: cover; background-image: url('<%= @mini_feed.image.url %>')">
+     
+    </div>
+    <div style="width: 60%; margin-left: 10px; display: inline-block;">
+      <h3><%= episode.title %></h3>
+      <%= episode.description.html_safe %>
+      <br />
+      <a class="blue-glow w-1/4 text-center uppercase bg-dark-blue text-sm text-white font-bold py-2 px-4"
+        style="color: white" id="set_<%= i %>" href="javascript:play(<%= i %>, '<%= episode.url %>')">Play</a>
+      <div id="play_<%= i %>">
+      </div>
+    </div>
+  </div>
+<% end %>
+<script>
+  function play(i, url) {
+    controls = document.createElement('audio');
+    controls.controls = "controls";
+    controls.preload = "auto";
+    source = document.createElement('source');
+    source.src = url;
+    source.type = "audio/mpeg";
+    controls.appendChild(source);
+    player = document.getElementById('play_' + i);
+    player.appendChild(controls);
+
+    button = document.getElementById('set_' + i);
+    button.style.display="none"; 
+  }
+</script>
