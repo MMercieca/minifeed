@@ -3,7 +3,7 @@
 <% end %>
 <div class="flex flex-row flex-wrap w-full">
   <% @mini_feeds.each do |feed| %>
-    <%= render partial: "/shared/card", locals: { feed: feed, path: mini_feed_path(identifier: @main_feed.identifier, id: feed.id) } %>
+    <%= render partial: "/shared/card", locals: { feed: feed, path: "/feeds/#{@main_feed.identifier}/#{feed.id}/listen" } %>
   <% end %>
   <div class="flex lg:w-1/3 md:w-1/2 sm:w-full m-auto h-full mb-4 p-2 align-top" href="">
     <div class="card w-full shadow m-auto p-4 bg-white">
