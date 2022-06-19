@@ -8,15 +8,28 @@
   <div class="flex lg:w-1/3 md:w-1/2 sm:w-full m-auto h-full mb-4 p-2 align-top" href="">
     <div class="card w-full shadow m-auto p-4 bg-white">
       <a href="<%= new_mini_feed_path(identifier: @main_feed.identifier) %>">
-      <div style="width: 100%; padding-bottom: 100%; background-image: url('/img/circle-plus.svg'); background-size: contain; background-repeat: no-repeat;">
-      </div>
-       </a>
-        <div class="py-2" style="">
-          <div class="text-xl text-center light-blue" style="min-height: 3em;">Add New Mini Cast</div>
-          <div class="text-sm">&nbsp;</div>
-          <textarea class="text-sm w-full px-2" rows="3" style="visibility: hidden"></textarea>
+        <div style="width: 100%; padding-bottom: 100%; background-image: url('/img/circle-plus.svg'); background-size: contain; background-repeat: no-repeat;">
         </div>
+      </a>
+      <div class="py-2" style="">
+        <div class="text-xl text-center light-blue" style="min-height: 3em;">Add New Mini Cast</div>
+        <div class="text-sm">&nbsp;</div>
+        <textarea class="text-sm w-full px-2" rows="3" style="visibility: hidden"></textarea>
       </div>
     </div>
+  </div>
+  <div class="flex lg:w-1/3 md:w-1/2 sm:w-full m-auto h-full mb-4 p-2 align-top" href="">
+    <div class="card w-full shadow m-auto p-4 bg-white">
+      <a href="/feeds/<%= @main_feed.identifier%>/delete" onclick="return confirm('Are you sure you want to delete <%= @main_feed.name %>?');">
+        <div style="width: 100%; padding-bottom: 100%; background-image: url('/img/circle-minus.svg'); background-size: contain; background-repeat: no-repeat;">
+        </div>
+      </a>
+      <div class="py-2" style="">
+        <div class="text-xl text-center red" style="min-height: 3em;">Delete Podcast Feed</div>
+        <div class="text-sm">&nbsp;</div>
+        <textarea class="text-sm w-full px-2" rows="3" style="visibility: hidden"></textarea>
+      </div>
+    </div>
+  </div>
 </div>
 

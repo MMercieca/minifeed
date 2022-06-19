@@ -28,6 +28,13 @@ class MainFeedsController < ApplicationController
     redirect_to known_feed_url(identifier: main_feed.identifier)
   end
 
+  def delete
+    feed = MainFeed.find_by(identifier: params[:identifier])
+    feed.destroy
+
+    redirect_to "/dashboard"
+  end
+
   def index
     @main_feed = MainFeed.find_by(user: current_user, identifier: params[:identifier])
 

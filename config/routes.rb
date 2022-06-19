@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post 'send_feedback', to: 'home#send_feedback'
   get 'error', to: 'home#error'
 
+  match '/feeds/:identifier/delete', to: 'main_feeds#delete', via: :get
   match '/feeds/:identifier/:id/listen', to: 'mini_feeds#listen', via: :get
   match '/feeds/:identifier/setup_known_feed', to: 'known_feeds#setup_known_feed', via: :get
   match '/feeds/:identifier/:id', to: 'feeds#show', via: :get
