@@ -79,7 +79,7 @@ class MainFeed < ApplicationRecord
     rss = fetch
     feeds = {}
     mini_feeds.each do |mini|
-      feeds[mini.feed_name] = []
+      feeds[mini.name] = []
     end
     
     episodes = rss.xpath("/rss/channel/item")
@@ -88,7 +88,7 @@ class MainFeed < ApplicationRecord
 
       mini_feeds.each do |mini|
         if title.starts_with?(mini.episode_prefix)
-          feeds[mini.feed_name] << episode
+          feeds[mini.name] << episode
         end
       end
     end
