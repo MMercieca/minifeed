@@ -1,13 +1,13 @@
-<nav class="fixed z-50 w-full bg-white top-0 flex flex-wrap items-center justify-between px-2 py-3 shadow-lg">
-  <div class="flex justify-between lg:w-auto lg:static lg:block lg:justify-start px-20">
+<nav class="z-50 w-full bg-white top-0 flex flex-wrap items-center justify-between px-2 py-3 shadow-lg main-header">
+  <div class="flex justify-between lg:w-auto lg:static block justify-end header-item">
     <a class="text-lg font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700" href="/">MINICAST</a>
     <% if show_dashboard_link? %>
-      <span class='text-m font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700'><a href="/dashboard">Dashboard</a></span>
+      <span class='text-m font-bold leading-relaxed inline-block px-2 pt-4 whitespace-nowrap uppercase text-slate-700'><a href="/dashboard">Dashboard</a></span>
     <% end %>
     <%= yield :breadcrumbs %>
   </div>
       
-  <div class="flex justify-between lg:w-auto lg:static lg:block lg:justify-end px-20">
+  <div class="flex justify-between lg:w-auto lg:static lg:block lg:justify-end header-item">
     <span class="flex-end">
       <% if current_user %>
         <%= link_to "Sign Out", users_sign_out_path, method: :delete, class: "text-m font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700" %>
