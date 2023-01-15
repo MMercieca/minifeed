@@ -33,3 +33,33 @@ a, a.link, a.visited {
   background-color: #f9fafb;
   border: 1px solid gray;
 }
+
+.home-info {
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.info-box {
+  width: 100%;
+}
+
+.main-footer {
+  color: white;
+  position: relative;
+}
+
+@media (min-width: 800px) {
+  .home-info {
+    flex-direction: row;
+  }
+
+  .info-box {
+    width: 25%;
+  }
+
+  .main-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+}
