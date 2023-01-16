@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
 
     links.each do |link|
       if link[0].nil?
-        breadcrumbs = "  #{breadcrumbs}  <span class='text-m font-bold leading-relaxed inline-block px-2 pt-4 whitespace-nowrap uppercase text-slate-700'>#{link[1]}</span>"
+        breadcrumbs = "  #{breadcrumbs}  <span class='text-m font-bold leading-relaxed inline-block px-2 pt-4 whitespace-nowrap uppercase text-slate-700 breadcrumb-label'>#{link[1]}</span>"
       else
         breadcrumbs = "  #{breadcrumbs}  <a class='text-m font-bold leading inline-block px-2 pt-4 whitespace-nowrap uppercase text-slate-700' href='#{link[0]}'>#{link[1]}</a>"
       end

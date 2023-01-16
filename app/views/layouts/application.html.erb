@@ -23,7 +23,7 @@
     <%= render partial: "/shared/header" %>
     <main id="main" class="w-full flex flex-col">
       <div class="self-center w-full sm:w-2/3 sm:px:0">
-        <div class="font-light text-black text-lg pt-24">
+        <div class="font-light text-black text-lg">
           <% unless flash["error"].blank? %>
             <div class="flex flex-row-reverse w-full border p-4 font-bold rounded fade-out" style="background-color: #ffa822;">
               <div class="w-1/16" onClick="removeFlash(this)">X</div>
