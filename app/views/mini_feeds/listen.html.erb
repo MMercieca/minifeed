@@ -1,10 +1,10 @@
 <% content_for :breadcrumbs do %>
   <%= build_breadcrumbs([ ["/dashboard", "Dashboard"], [main_feeds_url(identifier: @main_feed.identifier), @main_feed.name], [nil, @mini_feed.name] ]) %>
 <% end %>
-<%= render partial: "/shared/card", locals: { feed: @mini_feed, path: "/mini_feeds/#{@mini_feed.id }?identifier=#{@main_feed.identifier}" } %>
+<%= render partial: "/shared/card", locals: { feed: @mini_feed, path: "/mini_feeds/#{@mini_feed.id }?identifier=#{@main_feed.identifier}", classes: "listen-wrapper" } %>
 <% @episodes.each_with_index do |ep, i| %>
   <% episode = Episode.new(ep) %>
-  <div class="flex lg:w-1/3 md:w-1/2 sm:w-full m-auto mb-4 p-2 border-transparent border-2 card-wrapper" >
+  <div class="flex lg:w-1/3 md:w-1/2 sm:w-full m-auto mb-4 p-2 border-transparent border-2 card-wrapper listen-wrapper" >
     <div class="bg-white w-full h-full border-gray shadow card p-2">
       <h3><%= episode.title %></h3>
       <%= episode.description.html_safe %>

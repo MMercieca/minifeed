@@ -92,4 +92,8 @@ a, a.link, a.visited {
     padding-left: 80px;
     padding-right: 80px;
   }
+  
+  .listen-wrapper {
+    min-width: 500px;
+  }
 }
