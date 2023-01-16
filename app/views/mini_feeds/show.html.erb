@@ -1,5 +1,5 @@
 <% content_for :breadcrumbs do %>
-  <%= build_breadcrumbs([ ["/dashboard", "Dashboard"], [main_feeds_url(identifier: @main_feed.identifier), @main_feed.name], ["/feeds/#{@main_feed.identifier}/#{@mini_feed.id}/listen", @mini_feed.name], [nil, "Settings"] ]) %>
+  <%= build_breadcrumbs([ ["/dashboard", "Dashboard"], [main_feeds_url(identifier: @main_feed.identifier), @main_feed.name] ]) %>
 <% end %>
 <div class="w-full border border-dark-blue border-4 rounded rounded-lg px-4 bg-white">
   <%= form_with model: @mini_feed, method: :patch, id: "save_mini_cast", locals: true do |f| %>
