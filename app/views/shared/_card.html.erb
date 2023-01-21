@@ -19,7 +19,7 @@
       <% if feed.is_a?(MiniFeed) %>
         <div class="text-sm mt-2"><i class="text-orange fa fa-rss"></i> URL</div>
         <textarea readonly class="text-sm" style="overflow: scroll; height: 4em;border: 0; width: 90%; margin:auto; resize: none" 
-        onclick="copyToClipboard('<%= feed.url %>', <%= feed.id %>);"><%= feed.url %></textarea>
+        onclick="copyToClipboard('<%= feed.url %>', <%= feed.id %>);" aria-label="URL for <%= feed.name %>"><%= feed.url %></textarea>
         <span class='notice' style='opacity: 0' class='border border-gray px-2 text-sm bg-light-gray' id='feed-<%= feed.id %>'>Copied</span>
       <% end %>
     </div>
