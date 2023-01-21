@@ -1,6 +1,10 @@
-<nav class="z-50 w-full bg-white top-0 flex flex-wrap items-center justify-between px-2 py-3 shadow-lg main-header">
+<nav role="navigation" class="z-50 w-full bg-white top-0 flex flex-wrap items-center justify-between px-2 py-3 shadow-lg main-header">
   <div class="flex justify-between lg:w-auto lg:static block justify-end header-item">
+    <% if homepage? %>
+      <div class="text-lg font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700">MINICAST</div>
+    <% else %>
     <a class="text-lg font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700" href="/">MINICAST</a>
+    <% end %>
     <% if show_dashboard_link? %>
       <span class='text-m font-bold leading-relaxed inline-block px-2 pt-4 whitespace-nowrap uppercase text-slate-700'><a href="/dashboard">Dashboard</a></span>
     <% end %>

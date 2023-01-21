@@ -16,6 +16,11 @@ class ApplicationController < ActionController::Base
     return not_found unless current_user && current_user.is_admin?
   end
 
+  def homepage?
+    request.path == "/"
+  end
+  helper_method :homepage?
+
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
