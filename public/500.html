@@ -1,66 +1,107 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
+<!doctype html><html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="MiniCast - A Podcast and RSS splitter">
+    <meta name="author" content="Matt Mercieca">
+    <meta name="robots" content="index,follow">
+    <meta property="og:site_name" content="MiniCast - A Podcast and RSS splitter">
+    <meta property="og:title" content="MiniCast - A Podcast and RSS splitter">
+    <meta property="og:description" content="MiniCast - A Podcast and RSS splitter">
+    <meta property="og:url" content="/">
+    <title>MiniCast - A Podcast and RSS splitter</title>
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <script src="https://kit.fontawesome.com/87d9f919f8.js" crossorigin="anonymous"></script>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="ZDe5AipYzpw8I7v0DsGX0umeHrgEuWkrKqTjf33Dvws95-ckCWhX-OB5vhfVKnWmPd4Do5jFMuyyKpgbegwIaw" />
+    
+    <link rel="stylesheet" href="/assets/tailwind-ec327c0e87d6077293bcfd509a3af7d9374321e9899de8f49702074d61ad8538.css" data-turbo-track="reload" />
+<link rel="stylesheet" href="/assets/inter-font-8c3e82affb176f4bca9616b838d906343d1251adc8408efe02cf2b1e4fcf2bc4.css" data-turbo-track="reload" />
+    <link rel="stylesheet" href="/assets/application-66ca96d3add2a162c0204d47e331e402dff4053b895b133bfeb4103f266d5244.css" data-turbo-track="reload" />
+    <script type="importmap" data-turbo-track="reload">{
+  "imports": {
+    "application": "/assets/application-37f365cbecf1fa2810a8303f4b6571676fa1f9c56c248528bc14ddb857531b95.js",
+    "@hotwired/turbo-rails": "/assets/turbo.min-96cbf52c71021ba210235aaeec4720012d2c1df7d2dab3770cfa49eea3bb09da.js",
+    "@hotwired/stimulus": "/assets/stimulus.min-900648768bd96f3faeba359cf33c1bd01ca424ca4d2d05f36a5d8345112ae93c.js",
+    "@hotwired/stimulus-loading": "/assets/stimulus-loading-1fc59770fb1654500044afd3f5f6d7d00800e5be36746d55b94a2963a7a228aa.js",
+    "controllers/application": "/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js",
+    "controllers/hello_controller": "/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js",
+    "controllers": "/assets/controllers/index-2db729dddcc5b979110e98de4b6720f83f91a123172e87281d5a58410fc43806.js"
   }
-
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
-
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+}</script>
+<link rel="modulepreload" href="/assets/application-37f365cbecf1fa2810a8303f4b6571676fa1f9c56c248528bc14ddb857531b95.js">
+<link rel="modulepreload" href="/assets/turbo.min-96cbf52c71021ba210235aaeec4720012d2c1df7d2dab3770cfa49eea3bb09da.js">
+<link rel="modulepreload" href="/assets/stimulus.min-900648768bd96f3faeba359cf33c1bd01ca424ca4d2d05f36a5d8345112ae93c.js">
+<link rel="modulepreload" href="/assets/stimulus-loading-1fc59770fb1654500044afd3f5f6d7d00800e5be36746d55b94a2963a7a228aa.js">
+<script src="/assets/es-module-shims.min-8b21b40925fc92896e87358f40a2a8aaea6bf306b34ee4a215ec09c59c6cb3ba.js" async="async" data-turbo-track="reload"></script>
+<script type="module">import "application"</script>
+  </head>
+  <body id="top" class="font-sans text-gray-800 bg-gray-100 pb-16 bg-light-gray">
+    <nav role="navigation" class="z-50 w-full bg-white top-0 flex flex-wrap items-center justify-between px-2 py-3 shadow-lg main-header">
+  <div class="flex justify-between lg:w-auto lg:static block justify-end header-item">
+      <a href="/" class="text-lg font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700">MINICAST</a>
   </div>
-</body>
+</nav>
+    <main id="main" class="w-full flex flex-col">
+      <div class="self-center w-full sm:w-2/3 sm:px:0">
+        <div class="font-light text-black text-lg">
+          <section class="header relative items-center flex flex-row">
+  <div class="container mx-auto items-center flex">
+    <div class="w-1/2 md:w-full sm:w-full px-4">
+      <div class="mr-8 sm:pt-0">
+        <h1 class="font-semibold text-4xl text-slate-600">Something Went Wrong</h1>
+        <p class="mt-4 text-lg leading-relaxed text-slate-500">
+          We're sorry, but something has gone wrong.  The error has been logged. If you continue to have problems, please <a href="/contact">contact us.</a>
+        </p>
+      </div>
+    </div>
+    <div class="h-full align-center justify-center items-center pt-4">
+      <img class="" alt="Podcast logo" src="/img/podcast.svg" style="height: 300px;"/>
+    </div>
+  </div>
+</section>
+<div class="ml-4">
+  <a class="text-white font-bold px-6 py-4 mr-1 mb-1 bg-orange uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" style="color: white" href="javascript:history.go(-1)">Go Back</a>
+</div>
+
+
+        </div>
+      </div>
+    </main>
+    <div class="z-50 w-full bg-dark-blue flex flex-wrap items-center justify-between px-2 py-3 main-footer">
+  <div class="flex justify-between lg:w-auto lg:static lg:block lg:justify-start px-20">
+    <a class="text-m font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700" href="/contact" style="color: white">Contact</a>
+    <a class="text-m font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700" href="/legal" style="color: white">Legal</a>
+  </div>
+      
+  <div class="flex justify-between lg:w-auto lg:static lg:block lg:justify-end px-20">
+    <span class="flex-end">
+      <a class="text-m font-bold leading-relaxed inline-block px-2 py-2 whitespace-nowrap uppercase text-slate-700" style="color: white" 
+        href="https://www.buymeacoffee.com/mini.cast" aria-label="Opens in a new window" target="_blank">
+        Like the site? Buy me a coffee
+      </a>
+    </span>
+  </div>
+</div>
+  </body>
+  <script>
+    function removeFlash(el) {
+      el.parentElement.style.display = "none";
+    }
+  </script>
+  <script>
+  function copyToClipboard(data, notice) {
+    navigator.clipboard.writeText(data).then(function() {
+      el = document.getElementById('feed-' + notice);
+      el.style.opacity = '1';
+      setTimeout(fadeOut.bind(null, el), 1000);
+    });
+    
+  }
+
+  function fadeOut(el) {
+    el.style.opacity = '0';
+  }
+</script>
 </html>
