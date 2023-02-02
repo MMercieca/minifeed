@@ -39,10 +39,6 @@ class PatreonController < ApplicationController
     sign_in(:user, user)
 
     redirect_to after_sign_in_path_for(user)
-    # campaign = api_client.fetch_campaign_and_patrons()
-
-    # user_response uses [json-api-vanilla](https://github.com/trainline/json-api-vanilla) for easy usage
-    # render plain: api_client.fetch_user().data
   end
 
   def patreon_launch
