@@ -1,3 +1,6 @@
 
-<p>Use your Google account to sign up or sign in to the app.</p>
-<%= link_to "Launch with Google", user_google_oauth2_omniauth_authorize_path, style: "color: white", class: "card w-1/4 text-center bg-dark-orange text-sm uppercase text-white font-bold py-2 px-4" %>
+<p>Use your Google or Patreon account to sign up or sign in to the app.</p>
+<%= link_to "Launch with Google", user_google_oauth2_omniauth_authorize_path, style: "color: white; min-width: 220px;display: inline-block", class: "card w-1/4 text-center bg-dark-orange text-sm uppercase text-white font-bold py-2 px-4" %>
+<br />
+<br />
+<%= link_to "Launch with Patreon", "/patreon_launch", style: "color: white; min-width: 220px;display: inline-block", class: "card w-1/4 text-center bg-dark-blue text-sm uppercase text-white font-bold py-2 px-4" %>
