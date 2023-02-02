@@ -1,14 +1,16 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # replace with your authenticate method
-  # skip_before_action :authenticate_user!
-
   def google_oauth2
     auth = request.env["omniauth.auth"]
-    user = User.where(provider: auth["provider"], uid: auth["uid"])
-            .first_or_initialize(email: auth["info"]["email"])
-    user.name ||= auth["info"]["name"]
-    user.save!
-
+    user = User.find_by(email: email)
+    if !user
+      user = User.create!(
+        email: email,
+        name: auth["info"]["name"],
+        uid: auth["uid"],
+        provider: auth["provider"]
+      )
+    end
+    
     user.remember_me = true
     sign_in(:user, user)
 

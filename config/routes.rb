@@ -4,9 +4,6 @@ Rails.application.routes.draw do
     get "/users/sign_out" => "devise/sessions#destroy"
   end
   ActiveAdmin.routes(self)
-
-  get 'patreon_launch', to: 'patreon#patreon_launch'
-  get 'patreon_callback', to: 'patreon#patreon_callback'
   
   resources :main_feeds do
     post 'main_feed', to: 'main_feeds#create'
