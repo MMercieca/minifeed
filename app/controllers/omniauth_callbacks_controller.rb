@@ -3,11 +3,15 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth = request.env["omniauth.auth"]
     user_auth = UserAuthentication.find_by(provider: 'google', uid: auth['uid'], email: auth['info']['email'])
     if user_auth.nil?
-      user = User.create!(
-        email: auth['info']['email'],
-        name: auth['info']['name'],
-        provider: auth['provider']
-      )
+      user = User.find_by(email: auth['info']['email'])
+
+      if user.nil?
+        user = User.create!(
+          email: auth['info']['email'],
+          name: auth['info']['name'],
+          provider: auth['provider']
+        )
+      end
 
       user_auth = UserAuthentication.create!(
         user: user,
