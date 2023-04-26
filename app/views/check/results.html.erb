@@ -1,0 +1,51 @@
+<h2>Feed Check Results</h2>
+<table>
+  <tr><td>Url</td><td><%= @feed.url %></td></tr>
+  <tr><td>Title</td><td><%= @feed.title %></td></tr>
+  <tr><td>Updated at</td><td><%= @feed.updated_at %></td></tr>
+  <tr><td>Image</td><td><%= @feed.has_image? ? "Found" : "Not Found" %></td></tr>
+  <tr><td>Episode Count</td><td><%= @feed.episodes.count %></td></tr>
+  <tr><td>Summary</td><td>
+  <% if @feed.valid? %>
+    The feed appears to be valid.  The most recent episodes are shown below.
+  <% else %>
+    Problems were encountered while loading this feed.
+  <% end %> 
+  </td></tr>
+</table>
+<div class="flex lg:w-1/3 md:w-1/2 sm:w-full m-auto mb-4 p-2 border-transparent border-2 listen-wrapper" >
+  <div class="bg-white w-full h-full border-gray shadow card p-4">
+    <img src="<%= @feed.image_url %>" style="margin: auto" />
+  </div>
+</div>
+<% @feed.episodes.take(10).each_with_index do |ep, i| %>
+  <% episode = Episode.new(ep) %>
+  <div class="flex lg:w-1/3 md:w-1/2 sm:w-full m-auto mb-4 p-2 border-transparent border-2 card-wrapper listen-wrapper" >
+    <div class="bg-white w-full h-full border-gray shadow card p-4">
+      <h3><%= episode.title %></h3>
+      <p><%= episode.pub_date.to_formatted_s(:long) %></p>
+      <%= episode.description.html_safe %>
+      <a class="blue-glow w-1/4 text-center uppercase bg-dark-blue text-sm text-white font-bold py-2 px-4"
+        style="color: white" id="set_<%= i %>" href="javascript:play(<%= i %>, '<%= episode.url %>')">Play</a>
+      <div id="play_<%= i %>">
+      </div>
+    </div>
+  </div>
+<% end %>
+<script>
+  function play(i, url) {
+    controls = document.createElement('audio');
+    controls.controls = "controls";
+    controls.preload = "auto";
+    controls.style.width = "100%";
+    source = document.createElement('source');
+    source.src = url;
+    source.type = "audio/mpeg";
+    controls.appendChild(source);
+    player = document.getElementById('play_' + i);
+    player.appendChild(controls);
+
+    button = document.getElementById('set_' + i);
+    button.style.display="none"; 
+  }
+</script>

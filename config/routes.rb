@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   match '/feeds/:identifier/:id/listen', to: 'mini_feeds#listen', via: :get
   match '/feeds/:identifier/setup_known_feed', to: 'known_feeds#setup_known_feed', via: :get
   match '/feeds/:identifier/:id', to: 'feeds#show', via: :get
+  match '/check', to: 'check#show', via: :get
+  match '/check/results', to: 'check#results', via: :post
   
   # Defines the root path route ("/")
   root "home#home"

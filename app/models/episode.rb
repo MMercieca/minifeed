@@ -14,4 +14,11 @@ class Episode
   def description
     @xpath.xpath('description').children.first.text
   end
+
+  def pub_date
+    date = @xpath.elements.select { |e| e.name == "pubDate" }[0].text
+    return DateTime.parse(date) if date
+    
+    nil
+  end
 end

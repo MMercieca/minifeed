@@ -1,0 +1,8 @@
+<h2>Check RSS Feed</h2>
+<p>Not sure if your podcast player is up to date or if the feed is broken?</p>
+<p>Enter the URL here and we'll show you what we see.</p>
+<%= form_with url: '/check/results', method: :post, id: "feed_check", locals: true do |f| %>
+  <%= f.text_field 'url', style: 'width: 100%;' %><br /><br />
+  <p class="blue-glow w-1/4 text-center bg-dark-blue uppercase text-sm  text-white font-bold py-2 px-4" onClick="document.getElementById('feed_check').submit()">Check Feed</p>
+  <%= f.submit value: "Check Feed", style: "display: none"%>
+<% end %>
