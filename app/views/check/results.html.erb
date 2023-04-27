@@ -1,6 +1,8 @@
 <h2>Podcast Check Results</h2>
 <table>
-  <tr><td>Url</td><td><%= @feed.url %></td></tr>
+  <% unless @feed.valid? %>
+    <tr><td>Url</td><td><%= @feed.url %></td></tr>
+  <% end %>
   <tr><td>Title</td><td><%= @feed.title %></td></tr>
   <tr><td>Updated at</td><td><%= @feed.updated_at %></td></tr>
   <tr><td>Image</td><td><%= @feed.has_image? ? "Found" : "Not Found" %></td></tr>
