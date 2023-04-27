@@ -25,6 +25,10 @@ class Rss
     @image_url ||= feed_xml.xpath('/rss/channel/image/url').text
   end
 
+  def patreon?
+    @url.include?('https://www.patreon.com')
+  end
+
   def episodes
     episodes = feed_xml.xpath("/rss/channel/item")
   end

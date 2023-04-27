@@ -1,4 +1,4 @@
-<h2>Feed Check Results</h2>
+<h2>Podcast Check Results</h2>
 <table>
   <tr><td>Url</td><td><%= @feed.url %></td></tr>
   <tr><td>Title</td><td><%= @feed.title %></td></tr>
@@ -7,7 +7,13 @@
   <tr><td>Episode Count</td><td><%= @feed.episodes.count %></td></tr>
   <tr><td>Summary</td><td>
   <% if @feed.valid? %>
-    The feed appears to be valid.  The most recent episodes are shown below.
+    <p>The feed appears to be valid.  The most recent episodes are shown below.<p>
+    <p>If you see the episodes that are missing, the problem is with your <u>podcast player</u>.  You can try a different app or see if you can force a refresh of the podcast feed.</p>
+    <% if @feed.patreon? %>
+      <p>If you do not see the episodes below, the problem is with <a href="https://www.patreon.com">Patreon</a> and you need to work with them.</p>
+    <% else %>
+      <p>If you do not see the episodes below, the problem is with the <b>publisher of the podcast</b> and you need to get support from them.</p>
+    <% end %>
   <% else %>
     Problems were encountered while loading this feed.
   <% end %> 
