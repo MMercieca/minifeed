@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   match '/feeds/:identifier/:id', to: 'feeds#show', via: :get
   match '/check', to: 'check#show', via: :get
   match '/check/results', to: 'check#results', via: :post
+  match '/check/results', to: 'check#show', via: :get
   
   # Defines the root path route ("/")
   root "home#home"

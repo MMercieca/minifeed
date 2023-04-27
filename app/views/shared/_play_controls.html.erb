@@ -1,0 +1,17 @@
+<script>
+  function play(i, url) {
+    controls = document.createElement('audio');
+    controls.controls = "controls";
+    controls.preload = "auto";
+    controls.style.width = "100%";
+    source = document.createElement('source');
+    source.src = url;
+    source.type = "audio/mpeg";
+    controls.appendChild(source);
+    player = document.getElementById('play_' + i);
+    player.appendChild(controls);
+
+    button = document.getElementById('set_' + i);
+    button.style.display="none"; 
+  }
+</script>
