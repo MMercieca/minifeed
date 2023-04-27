@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
   def show_dashboard_link?
     return false unless current_user
     return true if request.path.length < 2
-    ["legal", "privacy", "terms", "contact"].each do |path|
+    ["legal", "privacy", "terms", "contact", "check"].each do |path|
       return true if request.path.include?(path)
     end
     false
