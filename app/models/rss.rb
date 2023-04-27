@@ -31,7 +31,7 @@ class Rss
 
   def updated_at
     return "Not found" unless episodes.count > 0
-    Episode.new(episodes.first).pub_date.to_formatted_s(:long)
+    Episode.new(episodes.first).pub_date.strftime("%A %B %d, %Y")
   end
 
   def title
