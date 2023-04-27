@@ -4,6 +4,8 @@ class CheckController < ApplicationController
 
   def results
     url = params[:url]
+    return redirect_to "/check" if url.blank?
+
     @feed = Rss.new(url)
   end
 
