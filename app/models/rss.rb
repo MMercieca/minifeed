@@ -26,7 +26,7 @@ class Rss
   end
 
   def patreon?
-    @url.include?('https://www.patreon.com')
+    @url.include?('https://www.patreon.com/rss') && @url.include?('auth=')
   end
 
   def episodes
