@@ -29,7 +29,7 @@
   </div>
 <% end %>
 <% if @feed.episodes.count > 0 %>
-  <% @feed.episodes.take(10).each_with_index do |ep, i| %>
+  <% @feed.episodes.each_with_index do |ep, i| %>
     <% episode = Episode.new(ep) %>
     <%= render "shared/episode", episode: episode, index: i %>
   <% end %>
