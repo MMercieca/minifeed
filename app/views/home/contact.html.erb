@@ -3,6 +3,7 @@
   <%= f.text_area 'content', style: 'width: 100%; min-height: 300px' %><br />
   <p class="blue-glow w-1/4 text-center bg-dark-blue uppercase text-sm  text-white font-bold py-2 px-4" onClick="document.getElementById('contact_form').submit()">Send Feedback</p>
   <%= f.submit value: "Send Feedback", style: "display: none"%>
+  <br />
   <%= recaptcha_tags %>
 <% end %>
 <br />
