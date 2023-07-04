@@ -288,6 +288,7 @@ GEM
       activerecord (>= 6.0.4)
       activesupport (>= 6.0.4)
       i18n
+    recaptcha (5.14.0)
     redis (4.6.0)
     regexp_parser (2.2.1)
     reline (0.3.1)
@@ -379,6 +380,7 @@ DEPENDENCIES
   pry
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
+  recaptcha
   redis (~> 4.0)
   rexml
   sassc-rails

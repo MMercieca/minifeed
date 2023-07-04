@@ -46,6 +46,7 @@ gem 'activeadmin'
 gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'patreon'
+gem 'recaptcha'
 
 # Use Sass to process CSS
 gem "sassc-rails"

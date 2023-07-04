@@ -15,6 +15,11 @@ class HomeController < ApplicationController
 
   def send_feedback
     user = current_user if current_user
+
+    if !user
+      return unless verify_recaptcha
+    end
+
     FeedbackMailer.send_feedback(user, params[:content]).deliver_now
 
     flash[:notice] = "Feedback sent"
