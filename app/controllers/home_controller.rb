@@ -17,7 +17,9 @@ class HomeController < ApplicationController
     user = current_user if current_user
 
     if !user
-      return unless verify_recaptcha
+      flash[:error] = "You must have an account to leave feedback."
+      render "contact"
+      return
     end
 
     FeedbackMailer.send_feedback(user, params[:content]).deliver_now
