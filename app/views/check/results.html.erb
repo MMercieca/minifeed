@@ -10,7 +10,13 @@
   <tr><td>Summary</td><td>
   <% if @feed.valid? %>
     <p>The feed appears to be valid.  The most recent episodes are shown below.<p>
-    <p>If you see the episodes that are missing, the problem is with your <u>podcast player</u>.  You can try a different app or see if you can force a refresh of the podcast feed.</p>
+    <p>If you see the episodes that are missing, the problem is with your <u>podcast player</u>.  You can try a different app or look for a way to force a refresh the podcast feed.
+       You may also use the URL below to add a new version of your feed which should bypass your podcast player's cache.  The new feed will not have your play history, however.</p>
+       <textarea readonly class="text-sm" style="overflow: scroll; height: 4em;border: 1px solid black; width: 90%; margin:auto; resize: none" 
+       onclick="copyToClipboard('<%= @feed.bust_cache_link %>', 1);" aria-label="URL for <%= @feed.title %>"><%= @feed.bust_cache_link %></textarea>
+       <span class='notice' style='opacity: 0' class='border border-gray px-2 text-sm bg-light-gray' id='feed-1'>Copied</span>
+    <br />
+    <br />
     <% if @feed.patreon? %>
       <p>If you do not see the episodes below, the problem is with <a href="https://www.patreon.com">Patreon</a> and you need to work with them.</p>
     <% else %>

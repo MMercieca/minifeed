@@ -45,4 +45,13 @@ class Rss
   def valid?
     !xml.nil? && !title.blank? && has_image? && episodes.count > 0
   end
+
+  def bust_cache_link
+    rnd = SecureRandom.uuid
+    if @url.include?('?')
+      "#{@url}&rnd=#{rnd}"
+    else
+      "#{@url}?rnd=#{rnd}"
+    end
+  end
 end
