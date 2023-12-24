@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_02_021046) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_24_232418) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -87,6 +87,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_021046) do
     t.datetime "end_date"
     t.integer "itunes_season"
     t.index ["known_feed_id"], name: "index_known_mini_feeds_on_known_feed_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.string "name"
+    t.date "entry_date"
+    t.string "classification"
+    t.decimal "amount"
+    t.boolean "taxable"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "main_feeds", force: :cascade do |t|
