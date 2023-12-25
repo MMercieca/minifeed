@@ -22,6 +22,7 @@ ActiveAdmin.register LineItem do
     f.object.entry_date = Date.today
     f.inputs do
       f.input :name, input_html: { style: 'width: 50%' } 
+      f.input :source, as: :select, collection: LineItem::SOURCES
       f.input :classification, as: :select, collection: %w(income expense)
       f.input :entry_date
       f.input :amount, input_html: { style: 'width: 150px'}

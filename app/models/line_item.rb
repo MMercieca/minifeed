@@ -1,6 +1,10 @@
+# Why is there a ledger in a RSS splitting app?
+#
+# I needed one for a different project but I only have one web site.  So,
+# much like the business world, the app grew a bit in unexpected ways.
 class LineItem < ApplicationRecord
   CLASSIFICATIONS=%w(income expense filter_columns_for_large_association)
-
+  SOURCES=%w(shopify etsy market)
   acts_as_paranoid
 
   scope :income, -> { where(classification: 'income') }
