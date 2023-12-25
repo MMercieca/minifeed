@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_24_232418) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_25_013316) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,6 +97,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_24_232418) do
     t.boolean "taxable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "entered_by", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_line_items_on_deleted_at"
   end
 
   create_table "main_feeds", force: :cascade do |t|
