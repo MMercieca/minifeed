@@ -4,6 +4,7 @@
 # much like the business world, the app grew a bit in unexpected ways.
 class LineItem < ApplicationRecord
   CLASSIFICATIONS=%w(income expense filter_columns_for_large_association)
+  CHANNELS=%w(website etsy market)
   SOURCES=%w(shopify etsy market)
   acts_as_paranoid
 
