@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_02_004559) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_02_005809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -140,6 +140,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_004559) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "glaze"
+    t.string "what"
   end
 
   create_table "user_authentications", force: :cascade do |t|
