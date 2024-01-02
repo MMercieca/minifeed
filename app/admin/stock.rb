@@ -10,6 +10,7 @@ ActiveAdmin.register StockItem do
       f.input :glaze
       f.input :description
       f.input :location
+      f.input :cost, input_html: { style: 'width: 150px'}
       f.input :price, input_html: { style: 'width: 150px'}
       f.input :sold
     end
