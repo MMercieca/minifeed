@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_02_005809) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_21_014038) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,22 +89,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_005809) do
     t.index ["known_feed_id"], name: "index_known_mini_feeds_on_known_feed_id"
   end
 
-  create_table "line_items", force: :cascade do |t|
-    t.string "name"
-    t.date "entry_date"
-    t.string "classification"
-    t.decimal "amount"
-    t.boolean "taxable"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "entered_by", null: false
-    t.datetime "deleted_at"
-    t.string "source"
-    t.string "description"
-    t.string "channel"
-    t.index ["deleted_at"], name: "index_line_items_on_deleted_at"
-  end
-
   create_table "main_feeds", force: :cascade do |t|
     t.string "url"
     t.datetime "polled_at"
@@ -127,20 +111,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_005809) do
     t.datetime "end_date"
     t.integer "itunes_season"
     t.index ["main_feed_id"], name: "index_mini_feeds_on_main_feed_id"
-  end
-
-  create_table "stock_items", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "image"
-    t.decimal "cost"
-    t.decimal "price"
-    t.string "location"
-    t.boolean "sold"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "glaze"
-    t.string "what"
   end
 
   create_table "user_authentications", force: :cascade do |t|
