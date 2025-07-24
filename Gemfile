@@ -50,6 +50,7 @@ gem "sassc-rails"
 gem "open-uri"
 gem "aws-sdk-s3", require: false
 gem "imgkit"
+gem "rmagick"
 gem "rexml"
 gem "paranoia"
 
