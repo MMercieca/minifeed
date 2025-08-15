@@ -5,7 +5,7 @@ class FeedsController < ApplicationController
 
     @mini_feed = main_feed.mini_feeds.find(params[:id])
 
-    @episodes = @mini_feed.episodes(@main_feed_xml)
+    @episodes = @mini_feed.episodes
   end
 
   def main_feed_xml
@@ -28,6 +28,13 @@ class FeedsController < ApplicationController
     end
   end
   helper_method :tag_from_main
+
+  def add_feed_episode(blob, scrub = false)
+    return blob.html_safe unless scrub
+
+    XmlHelpers.scrub_emoji(blob).html_safe
+  end
+  helper_method :add_feed_episode
   
   def feed_params
     params.permit(:identifier, :id)

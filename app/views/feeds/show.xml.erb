@@ -26,7 +26,7 @@
     <link><%= tag_from_main("/rss/channel/link") %></link>
   </image>
   <% @episodes.each do |episode| %>
-    <%= episode.to_xml.html_safe %>
+    <%= add_feed_episode(episode.to_xml, @mini_feed.ensure_android_auto_compatability) %>
   <% end %>
 </channel>
 </rss>

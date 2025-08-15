@@ -11,13 +11,18 @@ class MiniFeed < ApplicationRecord
     end
   end
 
-  def episodes(rss = nil)
-    if !rss
-      rss = main_feed.fetch
-    end
-
+  def rss
+    rss = main_feed.fetch
     return [] unless rss
 
+    rss
+  end
+
+  def all_episodes
+    rss.xpath("/rss/channel/item")
+  end
+
+  def episodes
     if itunes_season
       return episodes_by_season(rss, itunes_season)
     end
@@ -39,8 +44,7 @@ class MiniFeed < ApplicationRecord
 
   def episodes_by_season(rss, season)
     episodes = []
-
-    all_episodes = rss.xpath("/rss/channel/item")
+    
     all_episodes.each do |episode|
       season_text = episode.xpath("itunes:season").text
       next unless season
@@ -56,11 +60,10 @@ class MiniFeed < ApplicationRecord
   def episodes_by_start_date(rss, start_date)
     episodes = []
 
-    all_episodes = rss.xpath("/rss/channel/item")
     all_episodes.each do |episode|
       date = episode.xpath("pubDate")
       next unless date
-      date = Date.parse(date)
+      date = Date.parse(date.children.first.text)
       next unless date
 
       if date >= start_date
@@ -74,7 +77,6 @@ class MiniFeed < ApplicationRecord
   def episodes_by_end_date(rss, end_date)
     episodes = []
 
-    all_episodes = rss.xpath("/rss/channel/item")
     all_episodes.each do |episode|
       date = episode.xpath("pubDate").text
       next unless date
@@ -92,7 +94,6 @@ class MiniFeed < ApplicationRecord
   def episodes_by_dates(rss, start_date, end_date)
     episodes = []
 
-    all_episodes = rss.xpath("/rss/channel/item")
     all_episodes.each do |episode|
       date = episode.xpath("pubDate")
       next unless date
@@ -110,7 +111,6 @@ class MiniFeed < ApplicationRecord
   def episodes_by_prefix(rss)
     episodes = []
 
-    all_episodes = rss.xpath("/rss/channel/item")
     all_episodes.each do |episode|
       title = episode.xpath("title").text
       if title.include?(episode_prefix)
