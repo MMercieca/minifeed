@@ -20,7 +20,7 @@
   </div>
   <div class="flex lg:w-1/3 md:w-1/2 sm:w-full m-auto h-full mb-4 p-2 align-top" href="">
     <div class="card w-full shadow m-auto p-4 bg-white">
-      <a href="/feeds/<%= @main_feed.identifier%>/delete" onclick="return confirm('Are you sure you want to delete <%= @main_feed.name %>?');">
+      <a onclick='deleteMiniFeed("<%= "/feeds/#{@main_feed.identifier}/delete" %>", "<%= @main_feed.name %>")'>
         <div style="width: 100%; padding-bottom: 100%; background-image: url('/img/circle-minus.svg'); background-size: contain; background-repeat: no-repeat;">
         </div>
       </a>

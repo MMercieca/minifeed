@@ -61,5 +61,12 @@
   function fadeOut(el) {
     el.style.opacity = '0';
   }
+
+  function deleteMiniFeed(path, feed_name) {
+    if (confirm('Are you sure you want to delete ' + feed_name + '?')) {
+      document.location.href = path;
+    }
+    return false;
+  }
 </script>
 </html>
