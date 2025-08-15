@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_21_014038) do
+ActiveRecord::Schema[7.0].define(version: 2025_08_15_181538) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -110,6 +110,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_21_014038) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer "itunes_season"
+    t.boolean "ensure_android_auto_compatability", default: false
+    t.boolean "select_all_episodes", default: false
     t.index ["main_feed_id"], name: "index_mini_feeds_on_main_feed_id"
   end
 
