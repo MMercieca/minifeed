@@ -4,7 +4,6 @@ class FeedsController < ApplicationController
     redirect_to "/404" unless main_feed
 
     @mini_feed = main_feed.mini_feeds.find(params[:id])
-    @main_feed_xml = main_feed.fetch
 
     @episodes = @mini_feed.episodes(@main_feed_xml)
   end
@@ -15,7 +14,18 @@ class FeedsController < ApplicationController
 
   def tag_from_main(tag)
     return "" unless main_feed_xml
-    main_feed_xml.xpath(tag).text
+
+    begin
+      tag = main_feed_xml.xpath(tag).text
+
+      if @mini_feed&.ensure_android_auto_compatability
+        XmlHelpers.scrub_emoji(tag)
+      end
+
+      tag
+    rescue Nokogiri::XML::XPath::SyntaxError
+      return ""
+    end
   end
   helper_method :tag_from_main
   
