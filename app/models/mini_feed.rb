@@ -131,6 +131,11 @@ class MiniFeed < ApplicationRecord
   end
 
   def url(protocol = "https://", host = "minicast.app")
+    if Rails.env.development?
+      host = "localhost:3000"
+      protocol = "http://"
+    end
+
     "#{protocol}#{host}/feeds/#{main_feed.identifier}/#{id}.xml"
   end
 end
