@@ -6,6 +6,8 @@ I listen to a lot of podcasts which put multiple shows on the same feed.  This m
 
 Sorting and writing mini-RSS feeds was a lot easier than writing a podcast application. I was also a lot easier to share with other patrons of the same podcasts.
 
+After the application was deployed, I realized it could be used to fix other problems.  There's [a well documented bug with Android auto](https://community.spotify.com/t5/Android/Spotify-crashes-Android-Auto-when-song-title-contains-an-emoji/td-p/5362835) where non-ASCII characters will crash the experience.  So I added an option to filter out non-ASCII characters and include all of the episodes from the main feed.
+
 # Feedback
 
 Feedback and tech support is available through the [minicast contact form](https://minicast.app/contact).
@@ -32,6 +34,7 @@ I didn't want to deal with storing usernames and passwords, so all users will ei
 
 # Done
 
+* Add option to remove non-ASCII characters for Android Auto compatability
 * Update to rmajick (or something) to get off deprecated imgkit
 * Added podcast checkup too to aid with diagnosing non-minicast feed issues
 * Fixed security of AWS images
