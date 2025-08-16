@@ -97,3 +97,14 @@ a, a.link, a.visited {
     min-width: 500px;
   }
 }
+
+.circle-number {
+  padding-left: 5px;
+  padding-right: 5px; 
+  padding-top: 3px;
+  text-align: center;
+  display: block;
+  border-radius: 100%;
+  width:35px;
+  height: 35px;
+}

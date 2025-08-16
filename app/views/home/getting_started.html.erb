@@ -1,0 +1,46 @@
+<section class="w-full flex flex-row mt-32">
+  <div class="flex p-2">  
+    <div class="shadow p-2 text-slate-500">
+      <span class="bg-dark-orange text-white circle-number">
+        <i class="fa-solid fa-1"></i>
+      </span>
+      <br />
+      <p>Use your Google or Patreon account to sign up or sign in to the app.</p>
+      <%= link_to "Launch with Google", user_google_oauth2_omniauth_authorize_path, style: "color: white; min-width: 220px;display: inline-block", class: "card w-1/4 text-center bg-light-blue text-sm uppercase text-white font-bold py-2 px-4" %>
+      <br />
+      <br />
+      <%= link_to "Launch with Patreon", "/patreon_launch", style: "color: white; min-width: 220px;display: inline-block", class: "card w-1/4 text-center bg-dark-orange text-sm uppercase text-white font-bold py-2 px-4" %>
+    </div>
+  </div>
+  <div class="flex p-2">
+    <div class="shadow p-2 text-slate-500"">
+      <span class="bg-dark-orange text-white circle-number">
+        <i class="fa-solid fa-2"></i>
+      </span>
+      <br />
+      <p>Add the podcast you want to split up or filter to your dashboard.</p>
+      <img src="/img/add-podcast.png" />
+    </div>
+  </div>
+  <div class="flex p-2">
+    <div class="shadow p-2 text-slate-500"">
+      <span class="bg-dark-orange text-white circle-number">
+        <i class="fa-solid fa-3"></i>
+      </span>
+      <br />
+      <p>Filter the podcast how you want.</p>
+      <img src="/img/filter-podcast.png" />
+    </div>
+  </div>
+  <div class="flex p-2">
+    <div class="shadow p-2 text-slate-500"">
+      <span class="bg-dark-orange text-white circle-number">
+        <i class="fa-solid fa-4"></i>
+      </span>
+      <br />
+      <p>Add the filtered URL to your podcast player and enjoy!</p>
+    </div>
+  </div>
+  
+</sction>
+

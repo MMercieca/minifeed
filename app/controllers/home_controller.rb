@@ -34,6 +34,9 @@ class HomeController < ApplicationController
     end
   end
 
+  def getting_started
+  end
+
   def dashboard
     @feeds = current_user.main_feeds
   end

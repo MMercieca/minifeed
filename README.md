@@ -26,6 +26,8 @@ I didn't want to deal with storing usernames and passwords, so all users will ei
 
 # TO DO
 
+* Update home page with a better explaination of what the app does
+* Update launch page with more instructions
 * Add demo video using The Adventure Zone
 * Update feed editing UI
   * Add text or alt tags to make feed editing more obvious

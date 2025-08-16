@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get 'known_feed', to: 'known_feeds#show'
   get 'register', to: 'home#register'
+  get 'getting-started', to: 'home#getting_started'
   get 'dashboard', to: 'home#dashboard'
   get 'privacy', to: 'home#privacy'
   get 'legal', to: 'home#legal'
