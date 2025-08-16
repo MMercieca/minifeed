@@ -25,6 +25,16 @@ class MainFeedsController < ApplicationController
     main_feed.fetch
     main_feed.reload
     
+    if params[:android_auto] == "1"
+      mini_feed = MiniFeed.create!(
+        main_feed: main_feed,
+        name: main_feed.name,
+        ensure_android_auto_compatability: true,
+        select_all_episodes: true
+      )
+      mini_feed.image.attach(main_feed.image.blob)
+    end
+
     redirect_to known_feed_url(identifier: main_feed.identifier)
   end
 
@@ -42,6 +52,6 @@ class MainFeedsController < ApplicationController
   end
 
   def main_feed_params
-    params.require(:main_feed).permit(:name, :url)
+    params.require(:main_feed).permit(:name, :url, :android_auto)
   end
 end

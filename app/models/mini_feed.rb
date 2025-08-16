@@ -39,7 +39,11 @@ class MiniFeed < ApplicationRecord
       return episodes_by_end_date(rss, end_date)
     end
 
-    episodes_by_prefix(rss)
+    if episode_prefix
+      return episodes_by_prefix(rss)
+    end
+
+    all_episodes
   end
 
   def episodes_by_season(rss, season)
