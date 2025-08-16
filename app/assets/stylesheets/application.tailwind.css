@@ -102,8 +102,9 @@ a, a.link, a.visited {
   padding-left: 5px;
   padding-right: 5px; 
   padding-top: 3px;
+  margin-right: 10px;
   text-align: center;
-  display: block;
+  display: inline-block;
   border-radius: 100%;
   width:35px;
   height: 35px;
