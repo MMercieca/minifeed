@@ -31,16 +31,16 @@ class MainFeed < ApplicationRecord
   def self.validate_feed_url(url)
     begin
       uri = URI.parse(url)
-    rescue URI::InvalidURIError
+
+      feed_xml = URI.open(url).read
+      xml = Nokogiri(feed_xml)
+      if xml.xpath("/rss/channel").text.blank?
+        return false
+      end
+    rescue
       return false
     end
 
-    feed_xml = URI.open(url).read
-    xml = Nokogiri(feed_xml)
-    if xml.xpath("/rss/channel").text.blank?
-      return false
-    end
-    
     true
   end
 
