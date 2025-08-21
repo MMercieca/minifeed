@@ -2,9 +2,9 @@
   <div class="container mx-auto items-center flex">
     <div class="w-1/2 md:w-full sm:w-full px-4">
       <div class="mr-8 sm:pt-0">
-        <h1 class="font-semibold text-4xl text-slate-600">An intelligent podcast sorter</h1>
-        <p class="mt-4 text-lg leading-relaxed text-slate-500">
-          Take a podcast with multiple shows and sort the episodes into individual feeds for your podcast player of choice.
+        <h1 class="font-semibold text-4xl text-slate-600">An intelligent podcast splitter</h1>
+        <p class="leading-relaxed text-slate-500">
+          Take one podcast with multiple series and split it into mini-feeds, one feed for each series, and load them into your podcast player of choice.
         </p>
       </div>
     </div>
@@ -14,10 +14,28 @@
   </div>
 </section>
 <div class="ml-4">
-  <a class="text-white font-bold px-6 py-4 mr-1 mb-1 bg-orange uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" style="color: white" href="/getting-started">Get started</a>
+  <a class="text-white font-bold px-6 py-4 mr-1 mb-1 bg-orange uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" style="color: white; text-decoration: none" href="/getting-started">Get started</a>
 </div>
 
-<section class="w-full flex flex-row mt-32 home-info">
+<section class="header relative items-center flex flex-row mt-16">
+  <div class="container mx-auto items-center flex">
+    <div class="w-1/2 md:w-full sm:w-full px-4">
+      <div class="mr-8 sm:pt-0">
+        <p class="leading-relaxed text-slate-500">Want to catch up on the Mighty Nein before their cartoon airs on Amazon? <a href="/critical-role">Split up the Critical Role feed by title</a>.</p>
+        <p class="leading-relaxed text-slate-500">Want to relisten to the Balance arc of The Adventure Zone? <a href="/adventure-zone">Split up the feed by iTunes season</a>.</p>
+        <p class="leading-relaxed text-slate-500">Emojis crashing your Android Auto car? <a href="/android-auto">Load all the episodes with Android Auto compatibility</a>.</p>
+    
+      </div>
+    </div>
+  </div>
+</section>
+<% if false %>
+<section class="w-full flex flex-row mt-8 home-info">
+  <div class="flex p-2 info-box">
+    <div class="shadow p-2 text-slate-500" style="box-shadow: 0 5px 15px rgba(18, 87, 127, .4);">
+      <p>Sort a podcast by <a href="/critical-role">words in the title</a>, <a href="/adventure-zone">iTunes seasons</a>, or publication date.</p>
+    </div>
+  </div>
   <div class="flex p-2 info-box">  
     <div class="p-2 text-slate-500" style="box-shadow: 0 5px 15px rgba(18, 87, 127, .4);">
       <p>Works with your podcast player of choice--- it's just a different RSS feed.</p>
@@ -30,13 +48,13 @@
   </div>
   <div class="flex p-2 info-box">
     <div class="shadow p-2 text-slate-500" style="box-shadow: 0 5px 15px rgba(18, 87, 127, .4);">
-      <p>Sort a podcast by publication date, words in the title, or iTunes seasons.</p>
-    </div>
-  </div>
-  <div class="flex p-2 info-box">
-    <div class="shadow p-2 text-slate-500" style="box-shadow: 0 5px 15px rgba(18, 87, 127, .4);">
       <p>Add posters for your podcast player to quickly find your shows. &nbsp; &nbsp; &nbsp; &nbsp;
       &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</p>
     </div>
   </div>
-</sction>
+</section>
+<% end %>
+
+
+
+  

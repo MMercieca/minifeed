@@ -1,0 +1,21 @@
+<h1 class="font-semibold text-4xl text-slate-600">Make Podcast Work with Android Auto</h1>
+
+<p>There is a bug with some cars using Android Auto where <a href="https://community.spotify.com/t5/Android/Spotify-crashes-Android-Auto-when-song-title-contains-an-emoji/td-p/5362835">emojis 
+in the podcast title or description cause the unit to crash</a>.  We can make the feed compatible with Android Auto by
+removing the emojis.</p>
+
+<ol>
+<li>
+  Find the RSS feed.<br/>
+  The RSS feed is usually under the "Subscribe" option of a podcast and can be found with the RSS icon: <span class="bg-orange rounded"><i class="text-white fa-solid fa-rss p-1"></span></i>
+</li>
+<li>Copy the RSS link and save it for later.</li>
+<li>From the Minicast dashboard, select "Add New Podcast".</li>
+<li>Give the main feed a title and add the RSS URL.  Be sure "Include all episodes and fix Android Auto compatibility" is checked.<br />
+    This will automatically make a mini-cast that has all of the episodes of the main podcast, the same poster image, but also removes all
+    emojis from the feed for the player.
+  <img src="/img/features/taz-android-auto.png" alt="The UI for adding the podcast name and feed URL for The Adventure Zone. Include all episodes and fix Antroi Auto compatibility is checked." />
+</li>
+<li>You will be directed to a new Minicast with Android Auto fixed.</li>
+  <img src="/img/features/taz-android-auto-fixed.png" alt="The Minicast dashboard showing the fixed podcast." />
+</li>

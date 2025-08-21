@@ -31,6 +31,11 @@ Rails.application.routes.draw do
   post 'send_feedback', to: 'home#send_feedback'
   get 'error', to: 'home#error'
 
+  # Examples
+  get 'critical-role', to: 'home#critical_role'
+  get 'adventure-zone', to: 'home#adventure_zone'
+  get 'android-auto', to: 'home#android_auto'
+
   match '/feeds/:identifier/delete', to: 'main_feeds#delete', via: :get
   match '/feeds/:identifier/:id/listen', to: 'mini_feeds#listen', via: :get
   match '/feeds/:identifier/setup_known_feed', to: 'known_feeds#setup_known_feed', via: :get

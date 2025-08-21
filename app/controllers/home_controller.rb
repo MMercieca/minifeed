@@ -37,6 +37,15 @@ class HomeController < ApplicationController
   def getting_started
   end
 
+  def critical_role
+  end
+
+  def adventure_zone
+  end
+
+  def android_auto
+  end
+
   def dashboard
     @feeds = current_user.main_feeds
   end

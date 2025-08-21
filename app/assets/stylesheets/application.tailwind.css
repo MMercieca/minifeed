@@ -6,7 +6,7 @@
   cursor: pointer;
 }
 
-a, a.link, a.visited {
+nav a, nav a.link, nav a.visited {
   text-decoration: none !important;
 }
 
