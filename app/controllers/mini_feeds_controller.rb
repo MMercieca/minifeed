@@ -19,8 +19,6 @@ class MiniFeedsController < ApplicationController
       @mini_feed.image.attach(params[:image])
     end
 
-    @mini_feed.ensure_feed_image
-
     redirect_to mini_feed_url(identifier: @main_feed.identifier, id: @mini_feed.id)
   end
 
@@ -67,13 +65,11 @@ class MiniFeedsController < ApplicationController
       @mini_feed.end_date = date if date
     end
 
-    @mini_feed.save
-
     if params[:mini_feed][:image]
       @mini_feed.image.attach(params[:mini_feed][:image])
     end
-
-    @mini_feed.ensure_feed_image
+    
+    @mini_feed.save
 
     flash[:notice] = "Saved"
     redirect_to mini_feed_url(identifier: @main_feed.identifier, id: @mini_feed.id)

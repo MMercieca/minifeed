@@ -2,6 +2,7 @@ class MiniFeed < ApplicationRecord
   belongs_to :main_feed
   has_one_attached :image
   default_scope { order(name: :asc) }
+  before_save :ensure_feed_image
 
   def ensure_feed_image
     if !self.image.attached?
@@ -9,17 +10,6 @@ class MiniFeed < ApplicationRecord
 
       self.image.attach(io: StringIO.new(img.to_blob), filename: "#{self.name}.png", content_type: "image/png")
     end
-  end
-
-  def rss
-    rss = main_feed.fetch
-    return [] unless rss
-
-    rss
-  end
-
-  def all_episodes
-    rss.xpath("/rss/channel/item")
   end
 
   def episodes
@@ -40,10 +30,41 @@ class MiniFeed < ApplicationRecord
     end
 
     if episode_prefix
-      return episodes_by_prefix(rss)
+      return episodes_by_title(rss)
     end
 
     all_episodes
+  end
+
+  def polled_at
+    return nil unless episodes && episodes.count > 0
+
+    pubDate = episodes.first.elements.select { |e| e.name == "pubDate" }[0].text
+    return nil if pubDate.blank?
+    
+    DateTime.parse(pubDate)
+  end
+
+  def url(protocol = "https://", host = "minicast.app")
+    if Rails.env.development?
+      host = "localhost:3000"
+      protocol = "http://"
+    end
+
+    "#{protocol}#{host}/feeds/#{main_feed.identifier}/#{id}.xml"
+  end
+
+  private
+
+  def rss
+    rss = main_feed.fetch
+    return [] unless rss
+
+    rss
+  end
+
+  def all_episodes
+    rss.xpath("/rss/channel/item")
   end
 
   def episodes_by_season(rss, season)
@@ -112,7 +133,7 @@ class MiniFeed < ApplicationRecord
     episodes
   end
 
-  def episodes_by_prefix(rss)
+  def episodes_by_title(rss)
     episodes = []
 
     all_episodes.each do |episode|
@@ -123,23 +144,5 @@ class MiniFeed < ApplicationRecord
     end
 
     episodes
-  end
-
-  def polled_at
-    return nil unless episodes && episodes.count > 0
-
-    pubDate = episodes.first.elements.select { |e| e.name == "pubDate" }[0].text
-    return nil if pubDate.blank?
-    
-    DateTime.parse(pubDate)
-  end
-
-  def url(protocol = "https://", host = "minicast.app")
-    if Rails.env.development?
-      host = "localhost:3000"
-      protocol = "http://"
-    end
-
-    "#{protocol}#{host}/feeds/#{main_feed.identifier}/#{id}.xml"
   end
 end

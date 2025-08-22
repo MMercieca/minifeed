@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :mini_feed do
+    
+  end
+
   factory :user do
     email { "podcast-listener@example.com" }
   end
