@@ -30,8 +30,6 @@ class MainFeed < ApplicationRecord
 
   def self.validate_feed_url(url)
     begin
-      uri = URI.parse(url)
-
       feed_xml = URI.open(url).read
       xml = Nokogiri(feed_xml)
       if xml.xpath("/rss/channel").text.blank?
