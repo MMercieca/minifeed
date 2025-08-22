@@ -48,6 +48,7 @@ class MainFeed < ApplicationRecord
     self.image.attach(io: image, filename: 'logo.png')
   end
 
+  # TODOMPM - setup more known feeds or remove this functionality?  It's not really used anymore.
   def setup_known_mini_feeds
     feed = fetch
     
