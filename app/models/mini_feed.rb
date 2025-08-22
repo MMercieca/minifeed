@@ -13,25 +13,11 @@ class MiniFeed < ApplicationRecord
   end
 
   def episodes
-    if itunes_season
-      return episodes_by_season(rss, itunes_season)
-    end
-
-    if start_date && end_date
-      return episodes_by_dates(rss, start_date, end_date) 
-    end
-
-    if start_date
-      return episodes_by_start_date(rss, start_date)
-    end
-
-    if end_date
-      return episodes_by_end_date(rss, end_date)
-    end
-
-    if episode_prefix
-      return episodes_by_title(rss)
-    end
+    return episodes_by_season(rss, itunes_season) if itunes_season
+    return episodes_by_dates(rss, start_date, end_date) if start_date && end_date
+    return episodes_by_start_date(rss, start_date) if start_date
+    return episodes_by_end_date(rss, end_date) if end_date
+    return episodes_by_title(rss) if episode_prefix
 
     all_episodes
   end

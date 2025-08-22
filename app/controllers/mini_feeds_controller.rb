@@ -34,27 +34,33 @@ class MiniFeedsController < ApplicationController
     @episodes = @mini_feed.episodes
   end
 
+  def get_feeds(main_feed_identifier, mini_feed_identifier)
+    main_feed = MainFeed.find_by(identifier: main_feed_identifier)
+    mini_feed = MiniFeed.find_by(main_feed: main_feed, id: mini_feed_identifier)
+
+    if !main_feed || !mini_feed
+      flash["error"] = "Cast not found"
+      redirect_to "/dashboard"
+      return
+    end
+
+    return main_feed, mini_feed
+  end
+
   def delete
-    @main_feed = MainFeed.find_by(identifier: params[:mini_feed][:identifier])
-    @mini_feed = MiniFeed.find_by(main_feed: @main_feed, id: params[:mini_feed][:id])
+    @main_feed, @mini_feed = get_feeds(params[:mini_feed][:identifier], params[:mini_feed][:id])
+    return if !@main_feed || !@mini_feed
 
     if params[:commit] && params[:commit].include?("Delete")
       flash["notice"] = "#{@mini_feed.name} deleted."
       @mini_feed.destroy
       redirect_to main_feeds_url(identifier: @main_feed.identifier) 
-      return
     end
   end
 
   def update
-    @main_feed = MainFeed.find_by(identifier: params[:mini_feed][:identifier])
-    @mini_feed = MiniFeed.find_by(main_feed: @main_feed, id: params[:mini_feed][:id])
-    
-    if !@main_feed || !@mini_feed
-      flash["error"] = "Cast not found"
-      redirect_to "/dashboard"
-      return
-    end
+    @main_feed, @mini_feed = get_feeds(params[:mini_feed][:identifier], params[:mini_feed][:id])
+    return if !@main_feed || !@mini_feed
 
     @mini_feed.name = params[:mini_feed][:name]
     @mini_feed.episode_prefix = params[:mini_feed][:episode_prefix]
