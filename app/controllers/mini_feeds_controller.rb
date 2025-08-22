@@ -34,6 +34,18 @@ class MiniFeedsController < ApplicationController
     @episodes = @mini_feed.episodes
   end
 
+  def delete
+    @main_feed = MainFeed.find_by(identifier: params[:mini_feed][:identifier])
+    @mini_feed = MiniFeed.find_by(main_feed: @main_feed, id: params[:mini_feed][:id])
+
+    if params[:commit] && params[:commit].include?("Delete")
+      flash["notice"] = "#{@mini_feed.name} deleted."
+      @mini_feed.destroy
+      redirect_to main_feeds_url(identifier: @main_feed.identifier) 
+      return
+    end
+  end
+
   def update
     @main_feed = MainFeed.find_by(identifier: params[:mini_feed][:identifier])
     @mini_feed = MiniFeed.find_by(main_feed: @main_feed, id: params[:mini_feed][:id])
@@ -41,13 +53,6 @@ class MiniFeedsController < ApplicationController
     if !@main_feed || !@mini_feed
       flash["error"] = "Cast not found"
       redirect_to "/dashboard"
-      return
-    end
-
-    if params[:commit] && params[:commit].include?("Delete")
-      flash["notice"] = "#{@mini_feed.name} deleted."
-      @mini_feed.destroy
-      redirect_to main_feeds_url(identifier: @main_feed.identifier) 
       return
     end
 

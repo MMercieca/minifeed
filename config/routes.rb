@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :mini_feeds do
     post  'mini_feed', to: 'mini_feeds#create'
     patch 'mini_feed', to: 'mini_feeds#update'
+    delete 'mini_feed', to: 'mini_feeds#delete'
     get   'mini_feed', to: 'mini_feed#show'
   end
 
