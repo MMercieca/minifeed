@@ -81,8 +81,4 @@ RSpec.describe MainFeed, type: :model do
       expect(MainFeed.validate_feed_url('https://www.example.com/rss')).to be(false)
     end
   end
-
-  describe '#poll!' do
-    # TODOMPM - we'll need these for mini feeds
-  end
 end

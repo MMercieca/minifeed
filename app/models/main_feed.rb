@@ -72,24 +72,4 @@ class MainFeed < ApplicationRecord
       end
     end
   end
-
-  def poll!
-    rss = fetch
-    feeds = {}
-    mini_feeds.each do |mini|
-      feeds[mini.name] = []
-    end
-    
-    episodes = rss.xpath("/rss/channel/item")
-    episodes.each do |episode|
-      title = episode.xpath("title").text
-
-      mini_feeds.each do |mini|
-        if title.starts_with?(mini.episode_prefix)
-          feeds[mini.name] << episode
-        end
-      end
-    end
-    feeds
-  end
 end
