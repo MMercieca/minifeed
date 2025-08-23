@@ -70,11 +70,11 @@ class MiniFeed < ApplicationRecord
     all_episodes.each do |episode|
       season_number = nil
       episode.elements.each do |el|
-        next unless season_number.nil? && el.name == "itunes:season"
+        next if season_number.present? || (el.name != "itunes:season" && el.name != "season")
 
         season_number = el.text.to_i
       end
-      
+
       next unless season_number
 
       if season_number == season
