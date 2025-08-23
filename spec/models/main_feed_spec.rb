@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe MainFeed, type: :model do
   let(:user) { create(:user) }
-
+  let(:rss) { File.open(Rails.root.join('spec', 'fixtures', 'taz.xml')) }
+    
   before do
     feed = File.open(Rails.root.join('spec', 'fixtures', 'taz-full.xml')).read
     stub_request(:get, 'https://example.com/rss').to_return(status: 200, body: feed)
@@ -30,7 +31,6 @@ RSpec.describe MainFeed, type: :model do
 
   describe '#fetch' do
     let(:feed) { create(:main_feed) }
-    let(:rss) { File.open(Rails.root.join('spec', 'fixtures', 'taz.xml')) }
 
     before do
       allow(URI).to receive(:open).and_return(rss)
@@ -42,12 +42,16 @@ RSpec.describe MainFeed, type: :model do
       expect(URI).to have_received(:open)
     end
 
-    it 'does not poll more than once an hour' do
-      feed.update!(polled_at: 30.minutes.ago, cached_feed: rss.read)
-      feed.fetch
+    context 'when polled recently' do
+      let(:polled_feed) { create(:main_feed, polled_at: 30.minutes.ago, cached_feed: rss.read) }
 
-      expect(URI).not_to have_received(:open)
+      it 'does not poll more than once an hour' do
+        polled_feed.fetch
+
+        expect(URI).not_to have_received(:open)
+      end
     end
+    
 
     it 'always polls when there is no cached feed' do
       feed.update!(polled_at: 30.minutes.ago)
@@ -70,7 +74,6 @@ RSpec.describe MainFeed, type: :model do
   end
 
   describe 'self.validate_feed_url' do
-    let(:rss) { File.open(Rails.root.join('spec', 'fixtures', 'taz.xml')) }
     let(:html) { File.open(Rails.root.join('spec', 'fixtures', 'taz.html')) }
 
     it 'is valid if an RSS channel is found' do
