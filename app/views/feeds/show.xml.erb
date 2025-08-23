@@ -4,7 +4,7 @@
                    xmlns:spotify="http://www.spotify.com/ns/rss" xmlns:dcterms="http://purl.org/dc/terms/"
                    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0">
 <channel>
-  <title><%= @mini_feed.name %></title>
+  <title><%= XmlHelpers.scrub_emoji(@mini_feed.name) %></title>
   <link><%= tag_from_main("/rss/channel/link") %></link>
   <description><%= tag_from_main("/rss/channel/description") %></description>
   <atom:link><%= tag_from_main("/rss/channel/atom:link/@href") %></atom:link>
@@ -22,7 +22,7 @@
   <lastBuildDate><%= tag_from_main("/rss/channel/lastBuildDate") %></lastBuildDate>
   <image>
     <url><%= public_url(@mini_feed.image) %></url>
-    <title><%= @mini_feed.name %></title>
+    <title><%= XmlHelpers.scrub_emoji(@mini_feed.name) %></title>
     <link><%= tag_from_main("/rss/channel/link") %></link>
   </image>
   <% @episodes.each do |episode| %>

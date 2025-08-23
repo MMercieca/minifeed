@@ -19,7 +19,7 @@ class FeedsController < ApplicationController
       tag = main_feed_xml.xpath(tag).text
 
       if @mini_feed&.ensure_android_auto_compatability
-        XmlHelpers.scrub_emoji(tag)
+        tag = XmlHelpers.scrub_emoji(tag)
       end
 
       tag
