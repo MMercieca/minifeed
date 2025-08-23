@@ -2,6 +2,18 @@ class MiniFeed < ApplicationRecord
   belongs_to :main_feed
   has_one_attached :image
   default_scope { order(name: :asc) }
+  before_save :ensure_feed_image
+  validate :one_feed_setting
+
+  def one_feed_setting
+    if itunes_season && (start_date || end_date || episode_prefix)
+      errors.add(:self, 'Cannot set dates or title words when specifying an iTunes season')
+    end
+
+    if (start_date || end_date) && episode_prefix
+      errors.add(:self, 'Cannot set title words when specifying start or end date')
+    end
+  end
 
   def ensure_feed_image
     if !self.image.attached?
@@ -11,118 +23,14 @@ class MiniFeed < ApplicationRecord
     end
   end
 
-  def rss
-    rss = main_feed.fetch
-    return [] unless rss
-
-    rss
-  end
-
-  def all_episodes
-    rss.xpath("/rss/channel/item")
-  end
-
   def episodes
-    if itunes_season
-      return episodes_by_season(rss, itunes_season)
-    end
-
-    if start_date && end_date
-      return episodes_by_dates(rss, start_date, end_date) 
-    end
-
-    if start_date
-      return episodes_by_start_date(rss, start_date)
-    end
-
-    if end_date
-      return episodes_by_end_date(rss, end_date)
-    end
-
-    if episode_prefix
-      return episodes_by_prefix(rss)
-    end
+    return episodes_by_season(rss, itunes_season) if itunes_season
+    return episodes_by_dates(rss, start_date, end_date) if start_date && end_date
+    return episodes_by_start_date(rss, start_date) if start_date
+    return episodes_by_end_date(rss, end_date) if end_date
+    return episodes_by_title(rss) if episode_prefix
 
     all_episodes
-  end
-
-  def episodes_by_season(rss, season)
-    episodes = []
-    
-    all_episodes.each do |episode|
-      season_text = episode.xpath("itunes:season").text
-      next unless season
-      
-      if season_text.to_i == season
-        episodes << episode
-      end
-    end
-
-    episodes
-  end
-
-  def episodes_by_start_date(rss, start_date)
-    episodes = []
-
-    all_episodes.each do |episode|
-      date = episode.xpath("pubDate")
-      next unless date
-      date = Date.parse(date.children.first.text)
-      next unless date
-
-      if date >= start_date
-        episodes << episode
-      end
-    end
-
-    episodes
-  end
-
-  def episodes_by_end_date(rss, end_date)
-    episodes = []
-
-    all_episodes.each do |episode|
-      date = episode.xpath("pubDate").text
-      next unless date
-      date = Date.parse(date)
-      next unless date
-
-      if date <= end_date
-        episodes << episode
-      end
-    end
-
-    episodes
-  end
-
-  def episodes_by_dates(rss, start_date, end_date)
-    episodes = []
-
-    all_episodes.each do |episode|
-      date = episode.xpath("pubDate")
-      next unless date
-      date = Date.parse(date)
-      next unless date
-
-      if date <= end_date && date >= start_date
-        episodes << episode
-      end
-    end
-
-    episodes
-  end
-
-  def episodes_by_prefix(rss)
-    episodes = []
-
-    all_episodes.each do |episode|
-      title = episode.xpath("title").text
-      if title.include?(episode_prefix)
-        episodes << episode
-      end
-    end
-
-    episodes
   end
 
   def polled_at
@@ -141,5 +49,106 @@ class MiniFeed < ApplicationRecord
     end
 
     "#{protocol}#{host}/feeds/#{main_feed.identifier}/#{id}.xml"
+  end
+
+  private
+
+  def rss
+    rss = main_feed.fetch
+    return [] unless rss
+
+    rss.remove_namespaces!
+  end
+
+  def all_episodes
+    rss.xpath("//rss/channel/item")
+  end
+
+  def episodes_by_season(rss, season)
+    episodes = []
+    
+    all_episodes.each do |episode|
+      season_number = nil
+      episode.elements.each do |el|
+        next unless season_number.nil? && el.name == "itunes:season"
+
+        season_number = el.text.to_i
+      end
+      
+      next unless season_number
+
+      if season_number == season
+        episodes << episode
+      end
+    end
+
+    episodes
+  end
+
+  def episodes_by_start_date(rss, start_date)
+    episodes = []
+
+    all_episodes.each do |episode|
+      date = episode.xpath("pubdate")&.children&.first&.text
+      next unless date
+
+      date = Date.parse(date)
+      next unless date
+
+      if date >= start_date
+        episodes << episode
+      end
+    end
+
+    episodes
+  end
+
+  def episodes_by_end_date(rss, end_date)
+    episodes = []
+
+    all_episodes.each do |episode|
+      date = episode.xpath("pubdate")&.children&.first&.text
+      next unless date
+
+      date = Date.parse(date)
+      next unless date
+
+      if date <= end_date
+        episodes << episode
+      end
+    end
+
+    episodes
+  end
+
+  def episodes_by_dates(rss, start_date, end_date)
+    episodes = []
+
+    all_episodes.each do |episode|
+      date = episode.xpath("pubdate")&.children&.first&.text
+      next unless date
+
+      date = Date.parse(date)
+      next unless date
+
+      if date <= end_date && date >= start_date
+        episodes << episode
+      end
+    end
+
+    episodes
+  end
+
+  def episodes_by_title(rss)
+    episodes = []
+
+    all_episodes.each do |episode|
+      title = episode.xpath("title").text
+      if title.include?(episode_prefix)
+        episodes << episode
+      end
+    end
+
+    episodes
   end
 end

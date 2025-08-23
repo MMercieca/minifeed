@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+    <channel>
+        <atom:link href="https://feeds.simplecast.com/cYQVc__c" rel="self" title="MP3 Audio" type="application/atom+xml"/>
+        <atom:link href="https://simplecast.superfeedr.com" rel="hub" xmlns="http://www.w3.org/2005/Atom"/>
+        <generator>https://simplecast.com</generator>
+        <title>The Adventure Zone</title>
+        <description>Justin, Travis and Griffin McElroy from My Brother, My Brother and Me have recruited their dad Clint for a campaign of high adventure. Join the McElroys as they find their fortune and slay an unconscionable number of ... you know, kobolds or whatever in ... The Adventure Zone..</description>
+        <copyright>Copyright The McElroy Family, all rights reserved.</copyright>
+        <language>en</language>
+        <pubDate>Thu, 21 Aug 2025 11:00:00 +0000</pubDate>
+        <lastBuildDate>Thu, 21 Aug 2025 11:00:11 +0000</lastBuildDate>
+        <image>
+            <link>https://adventurezone.simplecast.com</link>
+            <title>The Adventure Zone</title>
+            <url>https://image.simplecastcdn.com/images/0838eec6-85d9-4e04-824b-d59d3798a659/b8e75c11-8438-4af7-9c79-c5b4752af8f9/3000x3000/adventure-20zone-20the-20-20season-209-20-20royale.jpg?aid=rss_feed</url>
+        </image>
+        <link>https://adventurezone.simplecast.com</link>
+        <itunes:type>episodic</itunes:type>
+        <itunes:summary>Justin, Travis and Griffin McElroy from My Brother, My Brother and Me have recruited their dad Clint for a campaign of high adventure. Join the McElroys as they find their fortune and slay an unconscionable number of ... you know, kobolds or whatever in ... The Adventure Zone..</itunes:summary>
+        <itunes:author>The McElroys</itunes:author>
+        <itunes:explicit>true</itunes:explicit>
+        <itunes:image href="https://image.simplecastcdn.com/images/0838eec6-85d9-4e04-824b-d59d3798a659/b8e75c11-8438-4af7-9c79-c5b4752af8f9/3000x3000/adventure-20zone-20the-20-20season-209-20-20royale.jpg?aid=rss_feed"/>
+        <itunes:new-feed-url>https://feeds.simplecast.com/cYQVc__c</itunes:new-feed-url>
+        <itunes:keywords>adventure, mcelroy, rpg</itunes:keywords>
+        <itunes:owner>
+            <itunes:name>The McElroys</itunes:name>
+            <itunes:email>shows@themcelroy.family</itunes:email>
+        </itunes:owner>
+        <itunes:category text="Fiction">
+            <itunes:category text="Comedy Fiction"/>
+        </itunes:category>
+        <itunes:category text="Leisure">
+            <itunes:category text="Games"/>
+        </itunes:category>
+        <item>
+            <guid isPermaLink="false">3232507e-3c22-4013-a95b-bd0bc4630331</guid>
+            <title>ATTN: Live shows up in MaxFun BoCo feed!</title>
+            <description>
+                <![CDATA[<p>Starting today we’ll be regularly releasing audio of TAZ live shows early for all MaxFun members! Dadlands 4, TAZ Vs. The Wonderful Wizard of Oz, and TAZ Vs. A Midsummer Night’s Dream are all available in the BoCo feed RIGHT NOW, so be sure to check them out, or go to <a href="https://MaximumFun.Org/Join" target="_blank">MaximumFun.Org/Join</a> to become a member.</p>
+                ]]>
+            </description>
+            <pubDate>Thu, 21 Aug 2025 11:00:00 +0000</pubDate>
+            <author>shows@themcelroy.family (Justin McElroy, Griffin McElroy, Travis McElroy, Clint McElroy)</author>
+            <link>https://adventurezone.simplecast.com/episodes/attn-live-shows-up-in-maxfun-boco-feed-ZvWqjQPw</link>
+            <content:encoded>
+                <![CDATA[<p>Starting today we’ll be regularly releasing audio of TAZ live shows early for all MaxFun members! Dadlands 4, TAZ Vs. The Wonderful Wizard of Oz, and TAZ Vs. A Midsummer Night’s Dream are all available in the BoCo feed RIGHT NOW, so be sure to check them out, or go to <a href="https://MaximumFun.Org/Join" target="_blank">MaximumFun.Org/Join</a> to become a member.</p>
+                ]]>
+            </content:encoded>
+            <enclosure length="1280791" type="audio/mpeg" url="https://afp-9384.calisto.simplecastaudio.com/e7ec86c9-5b4f-4c1c-af7b-0957921e175d/episodes/52340bd2-0b4e-4a32-a84f-f4e8b70dfbec/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=e7ec86c9-5b4f-4c1c-af7b-0957921e175d&amp;awEpisodeId=52340bd2-0b4e-4a32-a84f-f4e8b70dfbec&amp;feed=cYQVc__c"/>
+            <itunes:title>ATTN: Live shows up in MaxFun BoCo feed!</itunes:title>
+            <itunes:author>Justin McElroy, Griffin McElroy, Travis McElroy, Clint McElroy</itunes:author>
+            <itunes:duration>00:01:15</itunes:duration>
+            <itunes:summary>Starting today we’ll be regularly releasing audio of TAZ live shows early for all MaxFun members! Dadlands 4, TAZ Vs. The Wonderful Wizard of Oz, and TAZ Vs. A Midsummer Night’s Dream are all available in the BoCo feed RIGHT NOW, so be sure to check them out, or go to MaximumFun.Org/Join to become a member.</itunes:summary>
+            <itunes:subtitle>Starting today we’ll be regularly releasing audio of TAZ live shows early for all MaxFun members! Dadlands 4, TAZ Vs. The Wonderful Wizard of Oz, and TAZ Vs. A Midsummer Night’s Dream are all available in the BoCo feed RIGHT NOW, so be sure to check them out, or go to MaximumFun.Org/Join to become a member.</itunes:subtitle>
+            <itunes:explicit>true</itunes:explicit>
+            <itunes:episodeType>bonus</itunes:episodeType>
+            <itunes:season>9</itunes:season>
+        </item>
+        <item>
+            <guid isPermaLink="false">bdbe09a1-cb0c-47f4-ab13-b6218f925150</guid>
+            <title>The Adventure Zone Royale: Episode 6</title>
+            <description>
+                <![CDATA[<p>The surviving wizards inventory the dead and settle into the island encampment, seeking new spells and new allies before the next trial.</p><p>Royale Theme: “Wizard Disco” by Louie Zong: https://louiezong.bandcamp.com/album/wizard-disco</p><p>Original Music by Griffin McElroy</p><p>Additional Music in this Episode: "PULL" by Nctrnm: https://soundcloud.com/nctrnm; "Moulds Sun" by 10 Echo: https://10echo.bandcamp.com/; "A Chilling Tale" and "Welcome Home" by Kirk Osamayo: https://freemusicarchive.org/music/kirk-osamayo/; "Unforseen Consequences (Remastered)" by Techthiest: https://techtheist.ru; and "Languid Dawn" by Blear Moon: https://blearmoon.bandcamp.com/.</p><p>World Central Kitchen: https://wck.org/</p>
+                ]]>
+            </description>
+            <pubDate>Thu, 14 Aug 2025 11:00:00 +0000</pubDate>
+            <author>shows@themcelroy.family (Clint McElroy, Justin McElroy, Griffin McElroy, Travis McElroy)</author>
+            <link>https://adventurezone.simplecast.com/episodes/the-adventure-zone-royale-episode-6-Om_gmGCS</link>
+            <content:encoded>
+                <![CDATA[<p>The surviving wizards inventory the dead and settle into the island encampment, seeking new spells and new allies before the next trial.</p><p>Royale Theme: “Wizard Disco” by Louie Zong: https://louiezong.bandcamp.com/album/wizard-disco</p><p>Original Music by Griffin McElroy</p><p>Additional Music in this Episode: "PULL" by Nctrnm: https://soundcloud.com/nctrnm; "Moulds Sun" by 10 Echo: https://10echo.bandcamp.com/; "A Chilling Tale" and "Welcome Home" by Kirk Osamayo: https://freemusicarchive.org/music/kirk-osamayo/; "Unforseen Consequences (Remastered)" by Techthiest: https://techtheist.ru; and "Languid Dawn" by Blear Moon: https://blearmoon.bandcamp.com/.</p><p>World Central Kitchen: https://wck.org/</p>
+                ]]>
+            </content:encoded>
+            <enclosure length="76254063" type="audio/mpeg" url="https://afp-9384.calisto.simplecastaudio.com/e7ec86c9-5b4f-4c1c-af7b-0957921e175d/episodes/e60e52f1-2128-4eb2-98c2-f20a7cfe2850/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=e7ec86c9-5b4f-4c1c-af7b-0957921e175d&amp;awEpisodeId=e60e52f1-2128-4eb2-98c2-f20a7cfe2850&amp;feed=cYQVc__c"/>
+            <itunes:title>The Adventure Zone Royale: Episode 6</itunes:title>
+            <itunes:author>Clint McElroy, Justin McElroy, Griffin McElroy, Travis McElroy</itunes:author>
+            <itunes:image href="https://image.simplecastcdn.com/images/ab2ecf0d-35c9-4d5a-928d-82855fd0f7c9/6824ddb2-bf5d-4c03-a1cf-8de6b7696b06/3000x3000/tazroyale-cover-lg.jpg?aid=rss_feed"/>
+            <itunes:duration>01:07:28</itunes:duration>
+            <itunes:summary>The surviving wizards inventory the dead and settle into the island encampment, seeking new spells and new allies before the next trial.
+
+            Royale Theme: “Wizard Disco” by Louie Zong: https://louiezong.bandcamp.com/album/wizard-disco
+
+            Original Music by Griffin McElroy
+
+            Additional Music in this Episode: &quot;PULL&quot; by Nctrnm: https://soundcloud.com/nctrnm; &quot;Moulds Sun&quot; by 10 Echo: https://10echo.bandcamp.com/; &quot;A Chilling Tale&quot; and &quot;Welcome Home&quot; by Kirk Osamayo: https://freemusicarchive.org/music/kirk-osamayo/; &quot;Unforseen Consequences (Remastered)&quot; by Techthiest: https://techtheist.ru; and &quot;Languid Dawn&quot; by Blear Moon: https://blearmoon.bandcamp.com/.
+
+            World Central Kitchen: https://wck.org/</itunes:summary>
+            <itunes:subtitle>The surviving wizards inventory the dead and settle into the island encampment, seeking new spells and new allies before the next trial.
+
+            Royale Theme: “Wizard Disco” by Louie Zong: https://louiezong.bandcamp.com/album/wizard-disco
+
+            Original Music by Griffin McElroy
+
+            Additional Music in this Episode: &quot;PULL&quot; by Nctrnm: https://soundcloud.com/nctrnm; &quot;Moulds Sun&quot; by 10 Echo: https://10echo.bandcamp.com/; &quot;A Chilling Tale&quot; and &quot;Welcome Home&quot; by Kirk Osamayo: https://freemusicarchive.org/music/kirk-osamayo/; &quot;Unforseen Consequences (Remastered)&quot; by Techthiest: https://techtheist.ru; and &quot;Languid Dawn&quot; by Blear Moon: https://blearmoon.bandcamp.com/.
+
+            World Central Kitchen: https://wck.org/</itunes:subtitle>
+            <itunes:explicit>true</itunes:explicit>
+            <itunes:episodeType>full</itunes:episodeType>
+            <itunes:episode>6</itunes:episode>
+            <itunes:season>9</itunes:season>
+        </item>
+        <item>
+            <guid isPermaLink="false">19d005f9-a800-407a-9c97-5d651f1e1fe4</guid>
+            <title>The Adventure Zone Royale: Episode 5</title>
+            <description>
+                <![CDATA[<p>With only five minutes remaining before the fireball strikes, the remaining wizards scramble for keys and shelter, and some alliances hold while other falls apart. It’s an all-out wizard battle!</p><p>Royale Theme: “Wizard Disco” by Louie Zong: https://louiezong.bandcamp.com/album/wizard-disco</p><p>Original Music by Griffin McElroy</p><p>Additional Music in this Episode:  "Aisles" by Jahzzar: http://www.betterwithmusic.com/; "Unforeseen Consequences (Remastered)" by Techthiest: https://techtheist.ru; and "Eutophic WITH BEAT" by Mystery Mammal: https://open.spotify.com/artist/0Tqf9Yj15NqruGjhlKa6yb?si=bPMsyshuT5KVi3MeapM4hw&nd=1&dlsi=4cba1afcb02c42e3.</p><p>Immigrant Defenders Law Center: https://www.immdef.org/</p>
+                ]]>
+            </description>
+            <pubDate>Thu, 31 Jul 2025 11:00:00 +0000</pubDate>
+            <author>shows@themcelroy.family (Clint McElroy, Travis McElroy, Justin McElroy, Griffin McElroy)</author>
+            <link>https://adventurezone.simplecast.com/episodes/the-adventure-zone-royale-episode-5-I7_nP_YT</link>
+            <content:encoded>
+                <![CDATA[<p>With only five minutes remaining before the fireball strikes, the remaining wizards scramble for keys and shelter, and some alliances hold while other falls apart. It’s an all-out wizard battle!</p><p>Royale Theme: “Wizard Disco” by Louie Zong: https://louiezong.bandcamp.com/album/wizard-disco</p><p>Original Music by Griffin McElroy</p><p>Additional Music in this Episode:  "Aisles" by Jahzzar: http://www.betterwithmusic.com/; "Unforeseen Consequences (Remastered)" by Techthiest: https://techtheist.ru; and "Eutophic WITH BEAT" by Mystery Mammal: https://open.spotify.com/artist/0Tqf9Yj15NqruGjhlKa6yb?si=bPMsyshuT5KVi3MeapM4hw&nd=1&dlsi=4cba1afcb02c42e3.</p><p>Immigrant Defenders Law Center: https://www.immdef.org/</p>
+                ]]>
+            </content:encoded>
+            <enclosure length="104041639" type="audio/mpeg" url="https://afp-9384.calisto.simplecastaudio.com/e7ec86c9-5b4f-4c1c-af7b-0957921e175d/episodes/1961a311-5067-463f-9ed2-cfbd4f669562/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=e7ec86c9-5b4f-4c1c-af7b-0957921e175d&amp;awEpisodeId=1961a311-5067-463f-9ed2-cfbd4f669562&amp;feed=cYQVc__c"/>
+            <itunes:title>The Adventure Zone Royale: Episode 5</itunes:title>
+            <itunes:author>Clint McElroy, Travis McElroy, Justin McElroy, Griffin McElroy</itunes:author>
+            <itunes:image href="https://image.simplecastcdn.com/images/ab2ecf0d-35c9-4d5a-928d-82855fd0f7c9/109bc43f-9241-472c-ba28-a504f606d6db/3000x3000/tazroyale-cover-lg.jpg?aid=rss_feed"/>
+            <itunes:duration>01:36:25</itunes:duration>
+            <itunes:summary>With only five minutes remaining before the fireball strikes, the remaining wizards scramble for keys and shelter, and some alliances hold while other falls apart. It’s an all-out wizard battle!
+
+            Royale Theme: “Wizard Disco” by Louie Zong: https://louiezong.bandcamp.com/album/wizard-disco
+
+            Original Music by Griffin McElroy
+
+            Additional Music in this Episode:  &quot;Aisles&quot; by Jahzzar: http://www.betterwithmusic.com/; &quot;Unforeseen Consequences (Remastered)&quot; by Techthiest: https://techtheist.ru; and &quot;Eutophic WITH BEAT&quot; by Mystery Mammal: https://open.spotify.com/artist/0Tqf9Yj15NqruGjhlKa6yb?si=bPMsyshuT5KVi3MeapM4hw&amp;nd=1&amp;dlsi=4cba1afcb02c42e3.
+
+            Immigrant Defenders Law Center: https://www.immdef.org/</itunes:summary>
+            <itunes:subtitle>With only five minutes remaining before the fireball strikes, the remaining wizards scramble for keys and shelter, and some alliances hold while other falls apart. It’s an all-out wizard battle!
+
+            Royale Theme: “Wizard Disco” by Louie Zong: https://louiezong.bandcamp.com/album/wizard-disco
+
+            Original Music by Griffin McElroy
+
+            Additional Music in this Episode:  &quot;Aisles&quot; by Jahzzar: http://www.betterwithmusic.com/; &quot;Unforeseen Consequences (Remastered)&quot; by Techthiest: https://techtheist.ru; and &quot;Eutophic WITH BEAT&quot; by Mystery Mammal: https://open.spotify.com/artist/0Tqf9Yj15NqruGjhlKa6yb?si=bPMsyshuT5KVi3MeapM4hw&amp;nd=1&amp;dlsi=4cba1afcb02c42e3.
+
+            Immigrant Defenders Law Center: https://www.immdef.org/</itunes:subtitle>
+            <itunes:explicit>true</itunes:explicit>
+            <itunes:episodeType>full</itunes:episodeType>
+            <itunes:episode>5</itunes:episode>
+            <itunes:season>9</itunes:season>
+        </item>
+    </channel>
+</rss>

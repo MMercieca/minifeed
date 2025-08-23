@@ -30,8 +30,6 @@ class MainFeed < ApplicationRecord
 
   def self.validate_feed_url(url)
     begin
-      uri = URI.parse(url)
-
       feed_xml = URI.open(url).read
       xml = Nokogiri(feed_xml)
       if xml.xpath("/rss/channel").text.blank?
@@ -50,6 +48,7 @@ class MainFeed < ApplicationRecord
     self.image.attach(io: image, filename: 'logo.png')
   end
 
+  # TODOMPM - setup more known feeds or remove this functionality?  It's not really used anymore.
   def setup_known_mini_feeds
     feed = fetch
     
@@ -73,25 +72,5 @@ class MainFeed < ApplicationRecord
         self.mini_feeds << mini_feed
       end
     end
-  end
-
-  def poll!
-    rss = fetch
-    feeds = {}
-    mini_feeds.each do |mini|
-      feeds[mini.name] = []
-    end
-    
-    episodes = rss.xpath("/rss/channel/item")
-    episodes.each do |episode|
-      title = episode.xpath("title").text
-
-      mini_feeds.each do |mini|
-        if title.starts_with?(mini.episode_prefix)
-          feeds[mini.name] << episode
-        end
-      end
-    end
-    feeds
   end
 end
