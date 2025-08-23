@@ -3,6 +3,17 @@ class MiniFeed < ApplicationRecord
   has_one_attached :image
   default_scope { order(name: :asc) }
   before_save :ensure_feed_image
+  validate :one_feed_setting
+
+  def one_feed_setting
+    if itunes_season && (start_date || end_date || episode_prefix)
+      errors.add(:self, 'Cannot set dates or title words when specifying an iTunes season')
+    end
+
+    if (start_date || end_date) && episode_prefix
+      errors.add(:self, 'Cannot set title words when specifying start or end date')
+    end
+  end
 
   def ensure_feed_image
     if !self.image.attached?
@@ -46,21 +57,27 @@ class MiniFeed < ApplicationRecord
     rss = main_feed.fetch
     return [] unless rss
 
-    rss
+    rss.remove_namespaces!
   end
 
   def all_episodes
-    rss.xpath("/rss/channel/item")
+    rss.xpath("//rss/channel/item")
   end
 
   def episodes_by_season(rss, season)
     episodes = []
     
     all_episodes.each do |episode|
-      season_text = episode.xpath("itunes:season").text
-      next unless season
+      season_number = nil
+      episode.elements.each do |el|
+        next unless season_number.nil? && el.name == "itunes:season"
+
+        season_number = el.text.to_i
+      end
       
-      if season_text.to_i == season
+      next unless season_number
+
+      if season_number == season
         episodes << episode
       end
     end
@@ -72,9 +89,10 @@ class MiniFeed < ApplicationRecord
     episodes = []
 
     all_episodes.each do |episode|
-      date = episode.xpath("pubDate")
+      date = episode.xpath("pubdate")&.children&.first&.text
       next unless date
-      date = Date.parse(date.children.first.text)
+
+      date = Date.parse(date)
       next unless date
 
       if date >= start_date
@@ -89,8 +107,9 @@ class MiniFeed < ApplicationRecord
     episodes = []
 
     all_episodes.each do |episode|
-      date = episode.xpath("pubDate").text
+      date = episode.xpath("pubdate")&.children&.first&.text
       next unless date
+
       date = Date.parse(date)
       next unless date
 
@@ -106,8 +125,9 @@ class MiniFeed < ApplicationRecord
     episodes = []
 
     all_episodes.each do |episode|
-      date = episode.xpath("pubDate")
+      date = episode.xpath("pubdate")&.children&.first&.text
       next unless date
+
       date = Date.parse(date)
       next unless date
 

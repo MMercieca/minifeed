@@ -82,6 +82,10 @@ class MiniFeedsController < ApplicationController
     
     @mini_feed.save
 
+    if !@mini_feed.valid?
+      flash[:error] = "Could not save.  #{@mini_feed.errors.join('\n')}"
+    end
+
     flash[:notice] = "Saved"
     redirect_to mini_feed_url(identifier: @main_feed.identifier, id: @mini_feed.id)
   end
