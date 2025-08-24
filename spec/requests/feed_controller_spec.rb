@@ -1,9 +1,11 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.describe "FeedController", type: :request do
+require 'rails_helper'
+
+RSpec.describe 'FeedController', type: :request do
   let!(:main_feed) { create(:main_feed, url: 'https://example.com/rss') }
   let(:image) { File.open(Rails.root.join('spec', 'fixtures', 'this-is-a-long-title.png')) }
-  
+
   before do
     main_feed.image.attach(io: image, filename: 'test.png')
     feed = File.open(Rails.root.join('spec', 'fixtures', 'taz-full.xml')).read
@@ -12,35 +14,41 @@ RSpec.describe "FeedController", type: :request do
   end
 
   context 'with ensure_android_auto_compatability set' do
-    let(:mini_feed) { create(:mini_feed, main_feed: main_feed, name: 'Mini Feed Name', ensure_android_auto_compatability: true) }
+    let(:mini_feed) do
+      create(:mini_feed, main_feed: main_feed, name: 'Mini Feed Name', ensure_android_auto_compatability: true)
+    end
 
     it 'removes emojis from the feed title' do
       get "/feeds/#{main_feed.identifier}/#{mini_feed.id}.xml"
       rss = Nokogiri(response.body)
 
-      expect(rss.xpath("//rss/channel/description").text).to eq("Justin, Travis and Griffin McElroy from My Brother, My Brother and Me have recruited their dad Clint for a campaign of high adventure. Join the McElroys as they find their fortune and slay an unconscionable number of ... you know, kobolds or whatever in ... The Adventure Zone..")
+      expect(rss.xpath('//rss/channel/description').text).to eq('Justin, Travis and Griffin McElroy from My Brother, My Brother and Me have recruited their dad Clint for a campaign of high adventure. Join the McElroys as they find their fortune and slay an unconscionable number of ... you know, kobolds or whatever in ... The Adventure Zone..') # rubocop:disable Layout/LineLength
     end
   end
 
   context 'without ensure_android_auto_compatability set' do
-    let(:mini_feed) { create(:mini_feed, main_feed: main_feed, name: 'Mini Feed Name', ensure_android_auto_compatability: false) }
+    let(:mini_feed) do
+      create(:mini_feed, main_feed: main_feed, name: 'Mini Feed Name', ensure_android_auto_compatability: false)
+    end
 
     it 'removes emojis from the feed title' do
       get "/feeds/#{main_feed.identifier}/#{mini_feed.id}.xml"
       rss = Nokogiri(response.body)
 
-      expect(rss.xpath("//rss/channel/description").text).to eq("🔒Justin, Travis and Griffin McElroy from My Brother, My Brother and Me have recruited their dad Clint for a campaign of high adventure. Join the McElroys as they find their fortune and slay an unconscionable number of ... you know, kobolds or whatever in ... The Adventure Zone..")
+      expect(rss.xpath('//rss/channel/description').text).to eq('🔒Justin, Travis and Griffin McElroy from My Brother, My Brother and Me have recruited their dad Clint for a campaign of high adventure. Join the McElroys as they find their fortune and slay an unconscionable number of ... you know, kobolds or whatever in ... The Adventure Zone..') # rubocop:disable Layout/LineLength
     end
   end
 
   context 'with images' do
-    let(:mini_feed) { create(:mini_feed, main_feed: main_feed, name: 'Mini Feed Name', ensure_android_auto_compatability: false) }
+    let(:mini_feed) do
+      create(:mini_feed, main_feed: main_feed, name: 'Mini Feed Name', ensure_android_auto_compatability: false)
+    end
 
     it 'uses the public image URL' do
       get "/feeds/#{main_feed.identifier}/#{mini_feed.id}.xml"
       rss = Nokogiri(response.body)
 
-      expect(rss.xpath("//image/url").text.start_with?("https://s3")).to eq(true)
+      expect(rss.xpath('//image/url').text.start_with?('https://s3')).to eq(true)
     end
   end
 end

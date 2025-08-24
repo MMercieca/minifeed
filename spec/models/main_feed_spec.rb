@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe MainFeed, type: :model do
@@ -7,9 +9,9 @@ RSpec.describe MainFeed, type: :model do
     stub_request(:get, 'https://example.com/rss').to_return(status: 200, body: feed)
     stub_request(:get, 'https://www.example.com/rss').to_return(status: 200, body: feed)
     stub_request(:get, 'https://www.example.com/').to_return(status: 200, body: html)
-    stub_request(:get, 'https://example.com/').to_return(status: 200, body: "")
-    stub_request(:get, "https://image.simplecastcdn.com/images/0838eec6-85d9-4e04-824b-d59d3798a659/b8e75c11-8438-4af7-9c79-c5b4752af8f9/3000x3000/adventure-20zone-20the-20-20season-209-20-20royale.jpg?aid=rss_feed")
-         .to_return(status: 200, body: "", headers: {})
+    stub_request(:get, 'https://example.com/').to_return(status: 200, body: '')
+    stub_request(:get, 'https://image.simplecastcdn.com/images/0838eec6-85d9-4e04-824b-d59d3798a659/b8e75c11-8438-4af7-9c79-c5b4752af8f9/3000x3000/adventure-20zone-20the-20-20season-209-20-20royale.jpg?aid=rss_feed')
+      .to_return(status: 200, body: '', headers: {})
   end
 
   describe '#save' do
@@ -55,7 +57,6 @@ RSpec.describe MainFeed, type: :model do
         expect(URI).not_to have_received(:open)
       end
     end
-    
 
     it 'always polls when there is no cached feed' do
       feed.update!(polled_at: 30.minutes.ago)
@@ -66,7 +67,7 @@ RSpec.describe MainFeed, type: :model do
 
     it 'sets the cached feed' do
       feed.fetch
-      
+
       expect(feed.reload.cached_feed).not_to be_nil
     end
 

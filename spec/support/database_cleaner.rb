@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/support/database_cleaner.rb
 RSpec.configure do |config|
   config.before(:suite) do
