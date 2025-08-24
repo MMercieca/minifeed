@@ -47,14 +47,15 @@
         <%= f.submit value: "Save Mini Cast", style: "display: none" %>
         <div class="blue-glow w-1/4 text-center uppercase bg-dark-blue text-sm text-white font-bold py-2 px-4" onClick="document.getElementById('save_mini_cast').submit()">Save Mini Cast</div>
         &nbsp; &nbsp; 
-        <div class="card w-1/4 text-center text-sm uppercase bg-orange text-white font-bold py-2 px-4" onClick="document.getElementById('delete_mini_cast').click()" style="text-align: center">Delete Mini Cast</div>
+        <div class="card w-1/4 text-center text-sm uppercase bg-orange text-white font-bold py-2 px-4" onClick="document.getElementById('delete_mini_cast').submit()" style="text-align: center">Delete Mini Cast</div>
         
       </div>
     </fieldset>
   <% end %>
-  <%= form_with model: @mini_feed, method: :delete, id: "save_mini_cast", locals: true do |f| %>
+  <%= form_with model: @mini_feed, method: :delete, id: "delete_mini_cast", locals: true do |f| %>
     <%= f.hidden_field :identifier, value: @main_feed.identifier %>
     <%= f.hidden_field :id, value: @mini_feed.id %>
-    <%= f.submit value: "Delete Mini Cast", style: "display: none", id: "delete_mini_cast" %>
+    <%= f.hidden_field :commit, value: 'Delete' %>
+    <%= f.submit value: "Delete Mini Cast", style: "display: none", id: "delete_mini_cast_button" %>
   <% end %>
 </div>

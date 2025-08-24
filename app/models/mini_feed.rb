@@ -6,11 +6,11 @@ class MiniFeed < ApplicationRecord
   validate :one_feed_setting
 
   def one_feed_setting
-    if itunes_season && (start_date || end_date || episode_prefix)
+    if itunes_season && (start_date.present? || end_date.present? || episode_prefix.present?)
       errors.add(:self, 'Cannot set dates or title words when specifying an iTunes season')
     end
 
-    if (start_date || end_date) && episode_prefix
+    if (start_date.present? || end_date.present?) && episode_prefix.present?
       errors.add(:self, 'Cannot set title words when specifying start or end date')
     end
   end

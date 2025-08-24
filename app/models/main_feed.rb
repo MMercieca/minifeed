@@ -44,8 +44,9 @@ class MainFeed < ApplicationRecord
 
   def set_image_from_feed
     return if cached_feed.blank?
-    
-    image_url = Nokogiri(cached_feed).xpath('/rss/channel/image/url').text
+    feed = Nokogiri(cached_feed)
+    image_url = feed.xpath('/rss/channel/image/url').text
+    image_url = feed.xpath('/rss/channel/itunes:image/@href').text if image_url.blank?
     return if image_url.blank?
 
     logo = URI.parse(image_url).open
