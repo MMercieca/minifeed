@@ -47,15 +47,13 @@ class MiniFeedsController < ApplicationController
     return main_feed, mini_feed
   end
 
-  def delete
+  def destroy
     @main_feed, @mini_feed = get_feeds(params[:mini_feed][:identifier], params[:mini_feed][:id])
     return if !@main_feed || !@mini_feed
 
-    if params[:commit] && params[:commit].include?("Delete")
-      flash["notice"] = "#{@mini_feed.name} deleted."
-      @mini_feed.destroy
-      redirect_to main_feeds_url(identifier: @main_feed.identifier) 
-    end
+    flash["notice"] = "#{@mini_feed.name} deleted."
+    @mini_feed.destroy
+    redirect_to main_feeds_url(identifier: @main_feed.identifier)
   end
 
   def update

@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   before_action do
-    ActiveStorage::Current.host = 'http://localhost:3000' if Rails.env.development?
+    if Rails.env.development?
+      ActiveStorage::Current.url_options = {
+        protocol: request.protocol,
+        host: request.host,
+        port: request.port
+      }
+    end
   end
 
   unless Rails.application.config.consider_all_requests_local

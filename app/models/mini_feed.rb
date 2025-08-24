@@ -6,11 +6,11 @@ class MiniFeed < ApplicationRecord
   validate :one_feed_setting
 
   def one_feed_setting
-    if itunes_season && (start_date || end_date || episode_prefix)
+    if itunes_season && (start_date.present? || end_date.present? || episode_prefix.present?)
       errors.add(:self, 'Cannot set dates or title words when specifying an iTunes season')
     end
 
-    if (start_date || end_date) && episode_prefix
+    if (start_date.present? || end_date.present?) && episode_prefix.present?
       errors.add(:self, 'Cannot set title words when specifying start or end date')
     end
   end
@@ -36,7 +36,7 @@ class MiniFeed < ApplicationRecord
   def polled_at
     return nil unless episodes && episodes.count > 0
 
-    pubDate = episodes.first.elements.select { |e| e.name == "pubDate" }[0].text
+    pubDate = date_for_episode(episodes.first)
     return nil if pubDate.blank?
     
     DateTime.parse(pubDate)
@@ -89,7 +89,7 @@ class MiniFeed < ApplicationRecord
     episodes = []
 
     all_episodes.each do |episode|
-      date = episode.xpath("pubdate")&.children&.first&.text
+      date = date_for_episode(episode)
       next unless date
 
       date = Date.parse(date)
@@ -107,7 +107,7 @@ class MiniFeed < ApplicationRecord
     episodes = []
 
     all_episodes.each do |episode|
-      date = episode.xpath("pubdate")&.children&.first&.text
+      date = date_for_episode(episode)
       next unless date
 
       date = Date.parse(date)
@@ -125,7 +125,7 @@ class MiniFeed < ApplicationRecord
     episodes = []
 
     all_episodes.each do |episode|
-      date = episode.xpath("pubdate")&.children&.first&.text
+      date = date_for_episode(episode)
       next unless date
 
       date = Date.parse(date)
@@ -150,5 +150,12 @@ class MiniFeed < ApplicationRecord
     end
 
     episodes
+  end
+
+  def date_for_episode(episode)
+    date = episode.xpath("pubdate")&.children&.first&.text
+    date = episode.xpath("pubDate")&.children&.first&.text unless date
+
+    date
   end
 end

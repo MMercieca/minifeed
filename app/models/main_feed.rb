@@ -12,20 +12,20 @@ class MainFeed < ApplicationRecord
   end
 
   def fetch
-    if polled_at.nil? || cached_feed.nil? || polled_at < 1.hour.ago 
-      feed_xml = URI.open(url).read
-      self.polled_at = Time.zone.now
-      self.cached_feed = feed_xml
-      self.save
-      self.reload
+    if should_poll?
+      rss = URI.open(url).read
+      self.update_columns(polled_at: Time.zone.now, cached_feed: rss)
     end
 
-    if !self.image.attached?
+    if !image.attached?
       set_image_from_feed
     end
 
-    feed_xml = self.cached_feed
-    Nokogiri(feed_xml)
+    Nokogiri(self.cached_feed)
+  end
+
+  def should_poll?
+    polled_at.nil? || cached_feed.nil? || polled_at < 1.hour.ago
   end
 
   def self.validate_feed_url(url)
@@ -43,9 +43,14 @@ class MainFeed < ApplicationRecord
   end
 
   def set_image_from_feed
-    image_url = Nokogiri(self.cached_feed).xpath('/rss/channel/image/url').text
-    image = URI.parse(image_url).open
-    self.image.attach(io: image, filename: 'logo.png')
+    return if cached_feed.blank?
+    feed = Nokogiri(cached_feed)
+    image_url = feed.xpath('/rss/channel/image/url').text
+    image_url = feed.xpath('/rss/channel/itunes:image/@href').text if image_url.blank?
+    return if image_url.blank?
+
+    logo = URI.parse(image_url).open
+    image.attach(io: logo, filename: 'logo.png')
   end
 
   # TODOMPM - setup more known feeds or remove this functionality?  It's not really used anymore.
