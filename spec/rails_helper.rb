@@ -42,7 +42,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
@@ -68,29 +68,4 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-
-  #------- Database cleaner
-  # Disable transactional fixtures as DatabaseCleaner will handle cleaning
-  config.use_transactional_fixtures = false
-
-  config.before(:suite) do
-    # Clean the database with truncation before the test suite runs
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.before(:each) do
-    # Use the transaction strategy for most tests for speed
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.before(:each, js: true) do
-    # Use truncation for tests involving JavaScript (e.g., Capybara)
-    # because transactions can cause issues with separate database connections
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.after(:each) do
-    # Clean the database after each test
-    DatabaseCleaner.clean
-  end
 end
