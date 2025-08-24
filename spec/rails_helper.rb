@@ -11,6 +11,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'support/factory_bot'
 require 'webmock/rspec'
+require 'database_cleaner-active_record'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -67,4 +68,29 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  #------- Database cleaner
+  # Disable transactional fixtures as DatabaseCleaner will handle cleaning
+  config.use_transactional_fixtures = false
+
+  config.before(:suite) do
+    # Clean the database with truncation before the test suite runs
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    # Use the transaction strategy for most tests for speed
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, js: true) do
+    # Use truncation for tests involving JavaScript (e.g., Capybara)
+    # because transactions can cause issues with separate database connections
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.after(:each) do
+    # Clean the database after each test
+    DatabaseCleaner.clean
+  end
 end
