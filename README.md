@@ -15,7 +15,7 @@ Feedback and tech support is available through the [minicast contact form](https
 # Dependencies
 
 * Ruby 3
-* Rails 7
+* Rails 7.1
 * Tailwind CSS
 
 Everything should work after cloning the repo and doing a `bundle install`. 
@@ -26,22 +26,24 @@ I didn't want to deal with storing usernames and passwords, so all users will ei
 
 # TO DO
 
-* Update home page with a better explaination of what the app does
-* Update launch page with more instructions
+* Upgrade to Rails 8
 * Add demo video using The Adventure Zone
 * Update feed editing UI
   * Add text or alt tags to make feed editing more obvious
   * Convert mini feed setup to a wizard?
-* Add specs
 
 # Done
 
+* Update home page with a better explaination of what the app does
+* Update launch page with more instructions
 * Add option to remove non-ASCII characters for Android Auto compatability
 * Update to rmajick (or something) to get off deprecated imgkit
 * Added podcast checkup too to aid with diagnosing non-minicast feed issues
 * Fixed security of AWS images
-* Upgraded to Rails 7
+* Upgrade to Rails 7.2
+* Upgraded to Rails 7.1
 * Upgraded to Heroku buildpack 24
+* Add specs
 
 Color pallet:
 https://colors.muz.li/palette/ffa822/134e6f/ff6150/1ac0c6/dee0e6
