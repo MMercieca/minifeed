@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :mini_feed do
     main_feed { create(:main_feed) }
@@ -11,7 +13,7 @@ FactoryBot.define do
   end
 
   factory :user do
-    email { "podcast-listener@example.com" }
+    email { 'podcast-listener@example.com' }
   end
 
   factory :main_feed do

@@ -19,6 +19,7 @@ module Minicast
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    config.active_support.to_time_preserves_timezone = :zone
     # TODOMPM - Why is this necessary?
     config.assets.css_compressor = nil
   end

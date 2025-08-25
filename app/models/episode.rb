@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Episode
   def initialize(xpath)
     @xpath = xpath
@@ -16,9 +18,9 @@ class Episode
   end
 
   def pub_date
-    date = @xpath.elements.select { |e| e.name == "pubDate" }[0].text
+    date = @xpath.elements.select { |e| e.name == 'pubDate' }[0].text
     return DateTime.parse(date) if date
-    
+
     nil
   end
 end

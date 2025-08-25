@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.2.8"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "7.2.2.2"
+gem "rails", "8.0.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -53,9 +53,6 @@ gem "imgkit"
 gem "rmagick"
 gem "rexml"
 gem "paranoia"
-
-# TODOMPM - remove dependency on concurrent-ruby
-gem 'concurrent-ruby', '1.3.4'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
