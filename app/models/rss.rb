@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Rss
   attr_accessor :url
 
@@ -6,11 +8,9 @@ class Rss
   end
 
   def xml
-    begin
-      @xml ||= URI.open(url).read
-    rescue
-      @xml = nil
-    end
+    @xml ||= URI.open(url).read
+  rescue StandardError
+    @xml = nil
   end
 
   def feed_xml
@@ -30,20 +30,21 @@ class Rss
   end
 
   def episodes
-    episodes = feed_xml.xpath("/rss/channel/item")
+    feed_xml.xpath('/rss/channel/item')
   end
 
   def updated_at
-    return "Not found" unless episodes.count > 0
-    Episode.new(episodes.first).pub_date.strftime("%A %B %d, %Y")
+    return 'Not found' unless episodes.count.positive?
+
+    Episode.new(episodes.first).pub_date.strftime('%A %B %d, %Y')
   end
 
   def title
-    @title ||= feed_xml.xpath("/rss/channel/title").text
+    @title ||= feed_xml.xpath('/rss/channel/title').text
   end
 
   def valid?
-    !xml.nil? && !title.blank? && has_image? && episodes.count > 0
+    !xml.nil? && !title.blank? && has_image? && episodes.count.positive?
   end
 
   def bust_cache_link

@@ -1,4 +1,10 @@
+AllCops:
+    SuggestExtensions: false
 Metrics/BlockLength:
   Max: 25 # Or your desired maximum block length for other files
   Exclude:
     - 'spec/**/*' # Excludes all files within the 'spec' directory and its subdirectories
+Metrics/CyclomaticComplexity:
+  Max: 10
+Style/Documentation:
+  Enabled: false
