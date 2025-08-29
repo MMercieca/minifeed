@@ -15,7 +15,7 @@ Feedback and tech support is available through the [minicast contact form](https
 # Dependencies
 
 * Ruby 3
-* Rails 7.1
+* Rails 8.0
 * Tailwind CSS
 
 Everything should work after cloning the repo and doing a `bundle install`. 
@@ -26,14 +26,15 @@ I didn't want to deal with storing usernames and passwords, so all users will ei
 
 # TO DO
 
-* Upgrade to Rails 8
-* Add demo video using The Adventure Zone
 * Update feed editing UI
   * Add text or alt tags to make feed editing more obvious
   * Convert mini feed setup to a wizard?
+* Add demo video using The Adventure Zone
 
 # Done
 
+* Remove URI.open
+* Upgrade to Rails 8
 * Update home page with a better explaination of what the app does
 * Update launch page with more instructions
 * Add option to remove non-ASCII characters for Android Auto compatability
