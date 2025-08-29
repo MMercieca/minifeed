@@ -17,7 +17,7 @@ RSpec.describe RssService, type: :service do
   end
 
   context 'when successful' do
-    let(:mock_response) { instance_double(Net::HTTPSuccess, body: response_body, code: "200") }
+    let(:mock_response) { instance_double(Net::HTTPResponse, body: response_body, code: "200") }
     
     before do
       allow(mock_response).to receive(:code).and_return("200")
@@ -31,15 +31,25 @@ RSpec.describe RssService, type: :service do
   end
 
   context 'when the feed has moved' do
-    let(:mock_response) { instance_double(Net::HTTPSuccess, body: response_body, code: '301', header: {location: 'somewhere else'}) }
-    
+    let(:headers) { {} }
+    let(:mock_response) { instance_double(Net::HTTPResponse, body: response_body, code: '301', header: headers) }
+
     it 'raises an RssFeedMoved exception' do
       expect { RssService.get('https://example.com/rss') }.to raise_error(RssFeedMoved)
-    end 
+    end
+
+    it 'includes the new location in the error' do
+      headers['location'] = 'https://example.com/rss/2'
+      begin
+        RssService.get('https://example.com/rss')
+      rescue => e
+        expect(e.message).to eq('https://example.com/rss/2')
+      end
+    end
   end
 
   context 'when something else goes wrong' do
-    let(:mock_response) { instance_double(Net::HTTPSuccess, body: response_body, code: '401', message: 'something else') }
+    let(:mock_response) { instance_double(Net::HTTPResponse, body: response_body, code: '401', message: 'something else') }
  
     it 'raises an RssResponseError exception' do
       expect { RssService.get('https://example.com/rss') }.to raise_error(RssResponseError)
