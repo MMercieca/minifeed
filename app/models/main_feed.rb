@@ -15,7 +15,7 @@ class MainFeed < ApplicationRecord
 
   def fetch
     if should_poll?
-      rss = URI.open(url).read
+      rss = RssService.get(url)
       update_columns(polled_at: Time.zone.now, cached_feed: rss)
     end
 
@@ -30,7 +30,7 @@ class MainFeed < ApplicationRecord
 
   def self.validate_feed_url(url)
     begin
-      feed_xml = URI.open(url).read
+      feed_xml = RssService.get(url)
       xml = Nokogiri(feed_xml)
       return false if xml.xpath('/rss/channel').text.blank?
     rescue StandardError

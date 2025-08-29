@@ -8,7 +8,9 @@ class Rss
   end
 
   def xml
-    @xml ||= URI.open(url).read
+    @xml ||= RssService.get(url)
+  rescue RssFeedMoved => e
+    raise e
   rescue StandardError
     @xml = nil
   end

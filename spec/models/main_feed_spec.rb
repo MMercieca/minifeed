@@ -36,25 +36,25 @@ RSpec.describe MainFeed, type: :model do
 
   describe '#fetch' do
     let(:feed) { create(:main_feed) }
-    let(:rss) { File.open(Rails.root.join('spec', 'fixtures', 'taz-full.xml')) }
+    let(:rss) { File.open(Rails.root.join('spec', 'fixtures', 'taz-full.xml')).read }
 
     before do
-      allow(URI).to receive(:open).and_return(rss)
+      allow(RssService).to receive(:get).and_return(rss)
     end
 
     it 'polls initially' do
       feed.fetch
 
-      expect(URI).to have_received(:open)
+      expect(RssService).to have_received(:get)
     end
 
     context 'when polled recently' do
-      let(:polled_feed) { create(:main_feed, polled_at: 30.minutes.ago, cached_feed: rss.read) }
+      let(:polled_feed) { create(:main_feed, polled_at: 30.minutes.ago, cached_feed: rss) }
 
       it 'does not poll more than once an hour' do
         polled_feed.fetch
 
-        expect(URI).not_to have_received(:open)
+        expect(RssService).not_to have_received(:get)
       end
     end
 
@@ -62,7 +62,7 @@ RSpec.describe MainFeed, type: :model do
       feed.update!(polled_at: 30.minutes.ago)
       feed.fetch
 
-      expect(URI).to have_received(:open)
+      expect(RssService).to have_received(:get)
     end
 
     it 'sets the cached feed' do
